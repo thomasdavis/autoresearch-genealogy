@@ -31,6 +31,7 @@ interface ContextMenu {
   node: Node;
 }
 
+// Pre-compute color map for fast lookup
 const TYPE_COLORS: Record<string, string> = {
   person: '#ef4444',
   location: '#3b82f6',
@@ -42,10 +43,7 @@ const TYPE_COLORS: Record<string, string> = {
   occupation: '#84cc16',
   medical: '#f97316',
 };
-
 const DEFAULT_COLOR = '#6b7280';
-
-const PERSON_PRIORITY_TYPES = ['person', 'location', 'clan', 'organization'];
 
 function getColor(type: string) {
   return TYPE_COLORS[type] || DEFAULT_COLOR;
@@ -63,8 +61,9 @@ export default function GraphView({ data }: { data: GraphData }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [showLabels, setShowLabels] = useState(false);
 
-  // Responsive dimensions
+  // Responsive dimensions -- debounced
   useEffect(() => {
+    let raf: number;
     function updateDimensions() {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
@@ -74,9 +73,13 @@ export default function GraphView({ data }: { data: GraphData }) {
         });
       }
     }
+    function onResize() {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(updateDimensions);
+    }
     updateDimensions();
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
+    window.addEventListener('resize', onResize);
+    return () => { window.removeEventListener('resize', onResize); cancelAnimationFrame(raf); };
   }, []);
 
   // Close context menu on click elsewhere
@@ -85,6 +88,15 @@ export default function GraphView({ data }: { data: GraphData }) {
     window.addEventListener('click', handleClick);
     return () => window.removeEventListener('click', handleClick);
   }, []);
+
+  // Pre-compute a color array keyed by node index for the fastest possible paint
+  const nodeColorCache = useMemo(() => {
+    const cache = new Map<string, string>();
+    for (const n of data.nodes) {
+      cache.set(n.id, getColor(n.type));
+    }
+    return cache;
+  }, [data.nodes]);
 
   // Show all nodes; filter only when user applies type/search filters
   const graphData = useMemo(() => {
@@ -114,16 +126,30 @@ export default function GraphView({ data }: { data: GraphData }) {
     return { nodes, links };
   }, [data, filterType, searchQuery]);
 
+  // After simulation settles, stop the engine to free CPU
+  const handleEngineStop = useCallback(() => {
+    if (graphRef.current) {
+      graphRef.current.pauseAnimation();
+    }
+  }, []);
+
+  // Resume animation on interaction
+  const resumeAnimation = useCallback(() => {
+    if (graphRef.current) {
+      graphRef.current.resumeAnimation();
+    }
+  }, []);
+
   // Click: animate and center on node
   const handleNodeClick = useCallback((node: any) => {
     setFocusedNode(node);
     setContextMenu(null);
-
+    resumeAnimation();
     if (graphRef.current) {
       graphRef.current.centerAt(node.x, node.y, 800);
       graphRef.current.zoom(4, 800);
     }
-  }, []);
+  }, [resumeAnimation]);
 
   // Right-click: show context menu
   const handleNodeRightClick = useCallback((node: any, event: MouseEvent | TouchEvent) => {
@@ -133,50 +159,61 @@ export default function GraphView({ data }: { data: GraphData }) {
     setContextMenu({ x: clientX, y: clientY, node });
   }, []);
 
-  // Double-click: go to detail page
-  const handleNodeDblClick = useCallback((node: any) => {
-    router.push(`/entities/${node.id}`);
-  }, [router]);
-
   // Background click: reset zoom
   const handleBackgroundClick = useCallback(() => {
     setFocusedNode(null);
     setContextMenu(null);
+    resumeAnimation();
     if (graphRef.current) {
       graphRef.current.zoomToFit(400, 40);
     }
-  }, []);
+  }, [resumeAnimation]);
 
-  // Custom node rendering -- fast path for zoomed out, detailed when zoomed in
+  // Focused node id for fast comparison (avoids object identity check in hot path)
+  const focusedId = focusedNode?.id ?? null;
+
+  // Custom node rendering -- 3 LOD tiers for performance
   const paintNode = useCallback((node: any, ctx: CanvasRenderingContext2D, globalScale: number) => {
-    const isFocused = focusedNode?.id === node.id;
-    const baseSize = node.type === 'person' ? 3 : 1.5;
+    const isFocused = node.id === focusedId;
+    const color = nodeColorCache.get(node.id) || DEFAULT_COLOR;
+    const isPerson = node.type === 'person';
 
-    // At very low zoom with 50K+ nodes, draw minimal dots
-    if (globalScale < 0.3 && !isFocused) {
-      ctx.fillStyle = getColor(node.type);
-      ctx.fillRect(node.x - baseSize * 0.5, node.y - baseSize * 0.5, baseSize, baseSize);
+    // LOD tier 1: ultra-zoomed-out -- visible dots
+    if (globalScale < 0.15 && !isFocused) {
+      ctx.fillStyle = color;
+      const s = isPerson ? 4 : 2;
+      ctx.fillRect(node.x - s * 0.5, node.y - s * 0.5, s, s);
       return;
     }
 
-    const r = baseSize * (isFocused ? 2 : 1);
+    // LOD tier 2: zoomed-out -- bigger squares with slight glow for persons
+    if (globalScale < 0.5 && !isFocused) {
+      const s = isPerson ? 5 : 2.5;
+      ctx.fillStyle = color;
+      ctx.fillRect(node.x - s * 0.5, node.y - s * 0.5, s, s);
+      return;
+    }
 
-    // Glow effect for focused node
+    // LOD tier 3: normal/zoomed-in -- circles with optional labels
+    const baseSize = isPerson ? 5 : 2.5;
+    const r = baseSize * (isFocused ? 2.5 : 1);
+
     if (isFocused) {
+      // Outer glow
       ctx.beginPath();
       ctx.arc(node.x, node.y, r + 4, 0, 2 * Math.PI);
       ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
       ctx.fill();
+      // Inner glow
       ctx.beginPath();
       ctx.arc(node.x, node.y, r + 2, 0, 2 * Math.PI);
       ctx.fillStyle = 'rgba(139, 69, 19, 0.3)';
       ctx.fill();
     }
 
-    // Node circle
     ctx.beginPath();
     ctx.arc(node.x, node.y, r, 0, 2 * Math.PI);
-    ctx.fillStyle = getColor(node.type);
+    ctx.fillStyle = color;
     ctx.fill();
 
     if (isFocused) {
@@ -185,29 +222,37 @@ export default function GraphView({ data }: { data: GraphData }) {
       ctx.stroke();
     }
 
-    // Labels: only when zoomed in enough, or for focused node
+    // Labels only when zoomed in enough or for focused node
     if (isFocused || (showLabels && globalScale > 1.5) || globalScale > 4) {
-      const label = node.name;
       const fontSize = Math.max(10 / globalScale, 1.2);
       ctx.font = `${isFocused ? 'bold ' : ''}${fontSize}px sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
       ctx.fillStyle = isFocused ? '#000' : 'rgba(0,0,0,0.6)';
-      ctx.fillText(label, node.x, node.y + r + 1);
+      ctx.fillText(node.name, node.x, node.y + r + 1);
     }
-  }, [focusedNode, showLabels]);
+  }, [focusedId, showLabels, nodeColorCache]);
+
+  // Hit area for pointer -- slightly larger than visual for easier clicking
+  const paintNodeArea = useCallback((node: any, color: string, ctx: CanvasRenderingContext2D) => {
+    const r = node.type === 'person' ? 6 : 4;
+    ctx.fillStyle = color;
+    ctx.fillRect(node.x - r, node.y - r, r * 2, r * 2);
+  }, []);
 
   // Distinct entity types for filter dropdown
   const entityTypes = useMemo(() => {
-    const types = new Set(data.nodes.map(n => n.type));
-    return Array.from(types).sort();
+    const counts = new Map<string, number>();
+    for (const n of data.nodes) {
+      counts.set(n.type, (counts.get(n.type) || 0) + 1);
+    }
+    return Array.from(counts.entries()).sort((a, b) => b[1] - a[1]);
   }, [data]);
 
   return (
     <div ref={containerRef} className="w-full border border-parchment-dark rounded-lg bg-white relative overflow-hidden" style={{ height: dimensions.height }}>
       {/* Controls bar */}
       <div className="absolute top-2 left-2 right-2 z-10 flex flex-wrap gap-2 items-center">
-        {/* Search */}
         <input
           type="text"
           placeholder="Search nodes..."
@@ -215,20 +260,16 @@ export default function GraphView({ data }: { data: GraphData }) {
           onChange={e => setSearchQuery(e.target.value)}
           className="px-3 py-1.5 text-sm border border-parchment-dark rounded bg-white/90 backdrop-blur-sm w-40 sm:w-56 focus:outline-none focus:ring-1 focus:ring-accent"
         />
-
-        {/* Type filter */}
         <select
           value={filterType}
           onChange={e => setFilterType(e.target.value)}
           className="px-2 py-1.5 text-sm border border-parchment-dark rounded bg-white/90 backdrop-blur-sm focus:outline-none focus:ring-1 focus:ring-accent"
         >
-          <option value="all">All types</option>
-          {entityTypes.map(t => (
-            <option key={t} value={t}>{t} ({data.nodes.filter(n => n.type === t).length})</option>
+          <option value="all">All types ({data.nodes.length})</option>
+          {entityTypes.map(([t, count]) => (
+            <option key={t} value={t}>{t} ({count})</option>
           ))}
         </select>
-
-        {/* Labels toggle */}
         <button
           onClick={() => setShowLabels(!showLabels)}
           className={`px-3 py-1.5 text-sm border rounded backdrop-blur-sm transition-colors ${
@@ -237,18 +278,14 @@ export default function GraphView({ data }: { data: GraphData }) {
         >
           Labels
         </button>
-
-        {/* Reset view */}
         <button
           onClick={handleBackgroundClick}
           className="px-3 py-1.5 text-sm border border-parchment-dark rounded bg-white/90 backdrop-blur-sm text-ink-light hover:bg-parchment-dark/30 transition-colors"
         >
           Reset
         </button>
-
-        {/* Node count */}
         <span className="text-xs text-ink-light bg-white/80 px-2 py-1 rounded backdrop-blur-sm ml-auto hidden sm:inline">
-          {graphData.nodes.length} nodes / {graphData.links.length} links
+          {graphData.nodes.length.toLocaleString()} nodes / {graphData.links.length.toLocaleString()} links
         </span>
       </div>
 
@@ -342,24 +379,44 @@ export default function GraphView({ data }: { data: GraphData }) {
         ref={graphRef}
         graphData={graphData}
         nodeCanvasObject={paintNode}
-        nodePointerAreaPaint={(node: any, color: string, ctx: CanvasRenderingContext2D) => {
-          const r = node.type === 'person' ? 6 : 4;
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, r, 0, 2 * Math.PI);
-          ctx.fillStyle = color;
-          ctx.fill();
-        }}
+        nodePointerAreaPaint={paintNodeArea}
         onNodeClick={handleNodeClick}
         onNodeRightClick={handleNodeRightClick}
         onNodeHover={setHoverNode as any}
         onBackgroundClick={handleBackgroundClick}
-        linkColor={() => 'rgba(209,213,219,0.4)'}
-        linkWidth={0.5}
+        onEngineStop={handleEngineStop}
+        onNodeDragEnd={resumeAnimation}
+        onZoom={resumeAnimation}
+        linkAutoColorBy={undefined}
+        linkCanvasObjectMode={() => 'replace'}
+        linkCanvasObject={(link: any, ctx: CanvasRenderingContext2D, globalScale: number) => {
+          const src = link.source;
+          const tgt = link.target;
+          if (!src || !tgt || src.x == null || tgt.x == null) return;
+
+          // Graceful LOD for links -- visible at all zooms, stronger when zoomed in
+          const alpha = globalScale < 0.08 ? 0.1
+                      : globalScale < 0.2  ? 0.15
+                      : globalScale < 0.5  ? 0.25
+                      : globalScale < 1.5  ? 0.4
+                      : 0.55;
+
+          const width = globalScale < 0.15 ? 0.1 : globalScale < 0.5 ? 0.2 : globalScale < 1.5 ? 0.4 : 0.7;
+
+          ctx.beginPath();
+          ctx.moveTo(src.x, src.y);
+          ctx.lineTo(tgt.x, tgt.y);
+          ctx.strokeStyle = `rgba(120,115,110,${alpha})`;
+          ctx.lineWidth = width / globalScale;
+          ctx.stroke();
+        }}
         enableNodeDrag={true}
-        cooldownTime={5000}
-        warmupTicks={100}
-        d3AlphaDecay={0.02}
+        cooldownTime={4000}
+        warmupTicks={80}
+        d3AlphaDecay={0.03}
         d3VelocityDecay={0.4}
+        minZoom={0.05}
+        maxZoom={20}
         width={dimensions.width}
         height={dimensions.height}
       />
