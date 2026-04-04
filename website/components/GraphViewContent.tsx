@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useCallback, useMemo, useState, useRef, useEffect } from 'react';
-import ForceGraph2D from 'react-force-graph-2d';
+import ForceGraph3D from 'react-force-graph-3d';
 import { useRouter } from 'next/navigation';
+import * as THREE from 'three';
 
 interface Node {
   id: string;
@@ -11,6 +12,8 @@ interface Node {
   val?: number;
   x?: number;
   y?: number;
+  z?: number;
+  __threeObj?: any;
 }
 
 interface Link {
@@ -31,8 +34,18 @@ interface ContextMenu {
   node: Node;
 }
 
-// Pre-compute color map for fast lookup
-const TYPE_COLORS: Record<string, string> = {
+const TYPE_COLORS: Record<string, number> = {
+  person: 0xef4444,
+  location: 0x3b82f6,
+  document: 0x10b981,
+  clan: 0xf59e0b,
+  organization: 0x8b5cf6,
+  surname: 0xec4899,
+  ship: 0x06b6d4,
+  occupation: 0x84cc16,
+  medical: 0xf97316,
+};
+const TYPE_COLORS_CSS: Record<string, string> = {
   person: '#ef4444',
   location: '#3b82f6',
   document: '#10b981',
@@ -43,10 +56,35 @@ const TYPE_COLORS: Record<string, string> = {
   occupation: '#84cc16',
   medical: '#f97316',
 };
-const DEFAULT_COLOR = '#6b7280';
+const DEFAULT_COLOR = 0x6b7280;
 
-function getColor(type: string) {
+function getColorHex(type: string): number {
   return TYPE_COLORS[type] || DEFAULT_COLOR;
+}
+
+// Pre-build sprite textures per type for GPU instancing
+const spriteTextureCache = new Map<number, THREE.Texture>();
+function getSpriteTexture(color: number): THREE.Texture {
+  if (spriteTextureCache.has(color)) return spriteTextureCache.get(color)!;
+  const size = 64;
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d')!;
+  // Radial gradient for a glowing dot
+  const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+  const r = (color >> 16) & 0xff;
+  const g = (color >> 8) & 0xff;
+  const b = color & 0xff;
+  gradient.addColorStop(0, `rgba(${r},${g},${b},1)`);
+  gradient.addColorStop(0.4, `rgba(${r},${g},${b},0.8)`);
+  gradient.addColorStop(1, `rgba(${r},${g},${b},0)`);
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, size, size);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+  spriteTextureCache.set(color, texture);
+  return texture;
 }
 
 export default function GraphView({ data }: { data: GraphData }) {
@@ -61,7 +99,7 @@ export default function GraphView({ data }: { data: GraphData }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [showLabels, setShowLabels] = useState(false);
 
-  // Responsive dimensions -- debounced
+  // Responsive dimensions
   useEffect(() => {
     let raf: number;
     function updateDimensions() {
@@ -82,23 +120,30 @@ export default function GraphView({ data }: { data: GraphData }) {
     return () => { window.removeEventListener('resize', onResize); cancelAnimationFrame(raf); };
   }, []);
 
-  // Close context menu on click elsewhere
+  // Close context menu
   useEffect(() => {
     function handleClick() { setContextMenu(null); }
     window.addEventListener('click', handleClick);
     return () => window.removeEventListener('click', handleClick);
   }, []);
 
-  // Pre-compute a color array keyed by node index for the fastest possible paint
-  const nodeColorCache = useMemo(() => {
-    const cache = new Map<string, string>();
-    for (const n of data.nodes) {
-      cache.set(n.id, getColor(n.type));
-    }
-    return cache;
-  }, [data.nodes]);
+  // Configure forces and camera on mount
+  useEffect(() => {
+    if (!graphRef.current) return;
+    const fg = graphRef.current;
+    // Stronger charge to cluster nodes tightly
+    fg.d3Force('charge')?.strength(-15).distanceMax(500);
+    fg.d3Force('link')?.distance(30);
+    fg.d3Force('center')?.strength(1);
+    // Top-down camera
+    setTimeout(() => {
+      if (fg.camera()) {
+        fg.cameraPosition({ x: 0, y: 0, z: 2000 }, { x: 0, y: 0, z: 0 }, 0);
+      }
+    }, 200);
+  }, []);
 
-  // Show all nodes; filter only when user applies type/search filters
+  // Filter data
   const graphData = useMemo(() => {
     let candidateNodes = data.nodes;
     const nodeSet = new Set<string>();
@@ -106,7 +151,6 @@ export default function GraphView({ data }: { data: GraphData }) {
     if (filterType !== 'all') {
       candidateNodes = candidateNodes.filter(n => n.type === filterType);
     }
-
     if (searchQuery.length >= 2) {
       const q = searchQuery.toLowerCase();
       candidateNodes = candidateNodes.filter(n => n.name.toLowerCase().includes(q));
@@ -126,121 +170,60 @@ export default function GraphView({ data }: { data: GraphData }) {
     return { nodes, links };
   }, [data, filterType, searchQuery]);
 
-  // After simulation settles, stop the engine to free CPU
-  const handleEngineStop = useCallback(() => {
-    if (graphRef.current) {
-      graphRef.current.pauseAnimation();
-    }
+  // Node: GPU sprite
+  const nodeThreeObject = useCallback((node: any) => {
+    const color = getColorHex(node.type);
+    const texture = getSpriteTexture(color);
+    const material = new THREE.SpriteMaterial({
+      map: texture,
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    });
+    const sprite = new THREE.Sprite(material);
+    const size = node.type === 'person' ? 8 : 4;
+    sprite.scale.set(size, size, 1);
+    return sprite;
   }, []);
 
-  // Resume animation on interaction
-  const resumeAnimation = useCallback(() => {
-    if (graphRef.current) {
-      graphRef.current.resumeAnimation();
-    }
-  }, []);
-
-  // Click: animate and center on node
+  // Click: animate camera to node
   const handleNodeClick = useCallback((node: any) => {
     setFocusedNode(node);
     setContextMenu(null);
-    resumeAnimation();
     if (graphRef.current) {
-      graphRef.current.centerAt(node.x, node.y, 800);
-      graphRef.current.zoom(4, 800);
+      const distance = 200;
+      graphRef.current.cameraPosition(
+        { x: node.x, y: node.y, z: distance },
+        { x: node.x, y: node.y, z: 0 },
+        800
+      );
     }
-  }, [resumeAnimation]);
-
-  // Right-click: show context menu
-  const handleNodeRightClick = useCallback((node: any, event: MouseEvent | TouchEvent) => {
-    event.preventDefault();
-    const clientX = 'clientX' in event ? event.clientX : (event as TouchEvent).touches?.[0]?.clientX || 0;
-    const clientY = 'clientY' in event ? event.clientY : (event as TouchEvent).touches?.[0]?.clientY || 0;
-    setContextMenu({ x: clientX, y: clientY, node });
   }, []);
 
-  // Background click: reset zoom
+  // Right-click: context menu
+  const handleNodeRightClick = useCallback((node: any, event: MouseEvent) => {
+    event.preventDefault();
+    setContextMenu({ x: event.clientX, y: event.clientY, node });
+  }, []);
+
+  // Background click: reset
   const handleBackgroundClick = useCallback(() => {
     setFocusedNode(null);
     setContextMenu(null);
-    resumeAnimation();
     if (graphRef.current) {
       graphRef.current.zoomToFit(400, 40);
     }
-  }, [resumeAnimation]);
-
-  // Focused node id for fast comparison (avoids object identity check in hot path)
-  const focusedId = focusedNode?.id ?? null;
-
-  // Custom node rendering -- 3 LOD tiers for performance
-  const paintNode = useCallback((node: any, ctx: CanvasRenderingContext2D, globalScale: number) => {
-    const isFocused = node.id === focusedId;
-    const color = nodeColorCache.get(node.id) || DEFAULT_COLOR;
-    const isPerson = node.type === 'person';
-
-    // LOD tier 1: ultra-zoomed-out -- visible dots
-    if (globalScale < 0.15 && !isFocused) {
-      ctx.fillStyle = color;
-      const s = isPerson ? 4 : 2;
-      ctx.fillRect(node.x - s * 0.5, node.y - s * 0.5, s, s);
-      return;
-    }
-
-    // LOD tier 2: zoomed-out -- bigger squares with slight glow for persons
-    if (globalScale < 0.5 && !isFocused) {
-      const s = isPerson ? 5 : 2.5;
-      ctx.fillStyle = color;
-      ctx.fillRect(node.x - s * 0.5, node.y - s * 0.5, s, s);
-      return;
-    }
-
-    // LOD tier 3: normal/zoomed-in -- circles with optional labels
-    const baseSize = isPerson ? 5 : 2.5;
-    const r = baseSize * (isFocused ? 2.5 : 1);
-
-    if (isFocused) {
-      // Outer glow
-      ctx.beginPath();
-      ctx.arc(node.x, node.y, r + 4, 0, 2 * Math.PI);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-      ctx.fill();
-      // Inner glow
-      ctx.beginPath();
-      ctx.arc(node.x, node.y, r + 2, 0, 2 * Math.PI);
-      ctx.fillStyle = 'rgba(139, 69, 19, 0.3)';
-      ctx.fill();
-    }
-
-    ctx.beginPath();
-    ctx.arc(node.x, node.y, r, 0, 2 * Math.PI);
-    ctx.fillStyle = color;
-    ctx.fill();
-
-    if (isFocused) {
-      ctx.strokeStyle = '#fff';
-      ctx.lineWidth = 2;
-      ctx.stroke();
-    }
-
-    // Labels only when zoomed in enough or for focused node
-    if (isFocused || (showLabels && globalScale > 1.5) || globalScale > 4) {
-      const fontSize = Math.max(10 / globalScale, 1.2);
-      ctx.font = `${isFocused ? 'bold ' : ''}${fontSize}px sans-serif`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'top';
-      ctx.fillStyle = isFocused ? '#000' : 'rgba(0,0,0,0.6)';
-      ctx.fillText(node.name, node.x, node.y + r + 1);
-    }
-  }, [focusedId, showLabels, nodeColorCache]);
-
-  // Hit area for pointer -- slightly larger than visual for easier clicking
-  const paintNodeArea = useCallback((node: any, color: string, ctx: CanvasRenderingContext2D) => {
-    const r = node.type === 'person' ? 6 : 4;
-    ctx.fillStyle = color;
-    ctx.fillRect(node.x - r, node.y - r, r * 2, r * 2);
   }, []);
 
-  // Distinct entity types for filter dropdown
+  // Node label (shown on hover via ThreeJS CSS2D or title)
+  const nodeLabel = useCallback((node: any) => {
+    return `<div style="background:rgba(255,255,255,0.95);padding:4px 8px;border-radius:4px;font-size:12px;border:1px solid #d1c8b8;max-width:200px;pointer-events:none">
+      <div style="font-weight:bold">${node.name}</div>
+      <div style="font-size:10px;color:#888;text-transform:uppercase">${node.type}</div>
+    </div>`;
+  }, []);
+
+  // Entity types for dropdown
   const entityTypes = useMemo(() => {
     const counts = new Map<string, number>();
     for (const n of data.nodes) {
@@ -250,7 +233,7 @@ export default function GraphView({ data }: { data: GraphData }) {
   }, [data]);
 
   return (
-    <div ref={containerRef} className="w-full border border-parchment-dark rounded-lg bg-white relative overflow-hidden" style={{ height: dimensions.height }}>
+    <div ref={containerRef} className="w-full border border-parchment-dark rounded-lg bg-[#1a1a2e] relative overflow-hidden" style={{ height: dimensions.height }}>
       {/* Controls bar */}
       <div className="absolute top-2 left-2 right-2 z-10 flex flex-wrap gap-2 items-center">
         <input
@@ -265,9 +248,9 @@ export default function GraphView({ data }: { data: GraphData }) {
           onChange={e => setFilterType(e.target.value)}
           className="px-2 py-1.5 text-sm border border-parchment-dark rounded bg-white/90 backdrop-blur-sm focus:outline-none focus:ring-1 focus:ring-accent"
         >
-          <option value="all">All types ({data.nodes.length})</option>
+          <option value="all">All types ({data.nodes.length.toLocaleString()})</option>
           {entityTypes.map(([t, count]) => (
-            <option key={t} value={t}>{t} ({count})</option>
+            <option key={t} value={t}>{t} ({count.toLocaleString()})</option>
           ))}
         </select>
         <button
@@ -284,15 +267,15 @@ export default function GraphView({ data }: { data: GraphData }) {
         >
           Reset
         </button>
-        <span className="text-xs text-ink-light bg-white/80 px-2 py-1 rounded backdrop-blur-sm ml-auto hidden sm:inline">
-          {graphData.nodes.length.toLocaleString()} nodes / {graphData.links.length.toLocaleString()} links
+        <span className="text-xs text-white/60 bg-black/30 px-2 py-1 rounded backdrop-blur-sm ml-auto hidden sm:inline">
+          {graphData.nodes.length.toLocaleString()} nodes / {graphData.links.length.toLocaleString()} links (WebGL)
         </span>
       </div>
 
       {/* Legend */}
-      <div className="absolute bottom-2 left-2 z-10 bg-white/90 p-2 rounded border border-parchment-dark text-[10px] backdrop-blur-sm hidden sm:block">
-        <div className="flex flex-wrap gap-x-3 gap-y-1">
-          {Object.entries(TYPE_COLORS).map(([type, color]) => (
+      <div className="absolute bottom-2 left-2 z-10 bg-black/50 p-2 rounded border border-white/10 text-[10px] backdrop-blur-sm hidden sm:block">
+        <div className="flex flex-wrap gap-x-3 gap-y-1 text-white/80">
+          {Object.entries(TYPE_COLORS_CSS).map(([type, color]) => (
             <div key={type} className="flex items-center gap-1">
               <div className="w-2 h-2 rounded-full" style={{ backgroundColor: color }}></div>
               <span className="capitalize">{type}</span>
@@ -303,17 +286,17 @@ export default function GraphView({ data }: { data: GraphData }) {
 
       {/* Hover tooltip */}
       {hoverNode && (
-        <div className="absolute bottom-2 right-2 z-10 bg-white/90 p-2 rounded border border-parchment-dark text-sm backdrop-blur-sm max-w-[200px]">
+        <div className="absolute bottom-2 right-2 z-10 bg-black/70 p-2 rounded border border-white/10 text-sm backdrop-blur-sm max-w-[200px] text-white">
           <div className="font-bold truncate">{hoverNode.name}</div>
-          <div className="text-[10px] text-ink-light uppercase">{hoverNode.type}</div>
+          <div className="text-[10px] text-white/60 uppercase">{hoverNode.type}</div>
         </div>
       )}
 
       {/* Focused node info */}
       {focusedNode && !contextMenu && (
-        <div className="absolute bottom-14 sm:bottom-2 left-1/2 -translate-x-1/2 z-10 bg-white/95 px-4 py-2 rounded-lg border border-parchment-dark shadow-lg backdrop-blur-sm text-center max-w-xs">
+        <div className="absolute bottom-14 sm:bottom-2 left-1/2 -translate-x-1/2 z-10 bg-black/80 px-4 py-2 rounded-lg border border-white/20 shadow-lg backdrop-blur-sm text-center max-w-xs text-white">
           <div className="font-bold text-sm truncate">{focusedNode.name}</div>
-          <div className="text-[10px] text-ink-light uppercase mb-1">{focusedNode.type}</div>
+          <div className="text-[10px] text-white/60 uppercase mb-1">{focusedNode.type}</div>
           <div className="flex gap-2 justify-center">
             <button
               onClick={() => router.push(`/entities/${focusedNode.id}`)}
@@ -323,7 +306,7 @@ export default function GraphView({ data }: { data: GraphData }) {
             </button>
             <button
               onClick={handleBackgroundClick}
-              className="text-xs px-3 py-1 border border-parchment-dark rounded text-ink-light hover:bg-parchment-dark/20 transition-colors"
+              className="text-xs px-3 py-1 border border-white/30 rounded text-white/70 hover:bg-white/10 transition-colors"
             >
               Unfocus
             </button>
@@ -361,10 +344,7 @@ export default function GraphView({ data }: { data: GraphData }) {
             Focus Node
           </button>
           <button
-            onClick={() => {
-              navigator.clipboard.writeText(contextMenu.node.id);
-              setContextMenu(null);
-            }}
+            onClick={() => { navigator.clipboard.writeText(contextMenu.node.id); setContextMenu(null); }}
             className="w-full text-left px-3 py-2 text-sm hover:bg-parchment/50 transition-colors flex items-center gap-2 border-t border-parchment-dark/30"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -375,48 +355,27 @@ export default function GraphView({ data }: { data: GraphData }) {
         </div>
       )}
 
-      <ForceGraph2D
+      <ForceGraph3D
         ref={graphRef}
         graphData={graphData}
-        nodeCanvasObject={paintNode}
-        nodePointerAreaPaint={paintNodeArea}
+        nodeThreeObject={nodeThreeObject}
+        nodeLabel={nodeLabel}
         onNodeClick={handleNodeClick}
         onNodeRightClick={handleNodeRightClick}
         onNodeHover={setHoverNode as any}
         onBackgroundClick={handleBackgroundClick}
-        onEngineStop={handleEngineStop}
-        onNodeDragEnd={resumeAnimation}
-        onZoom={resumeAnimation}
-        linkAutoColorBy={undefined}
-        linkCanvasObjectMode={() => 'replace'}
-        linkCanvasObject={(link: any, ctx: CanvasRenderingContext2D, globalScale: number) => {
-          const src = link.source;
-          const tgt = link.target;
-          if (!src || !tgt || src.x == null || tgt.x == null) return;
-
-          // Graceful LOD for links -- visible at all zooms, stronger when zoomed in
-          const alpha = globalScale < 0.08 ? 0.1
-                      : globalScale < 0.2  ? 0.15
-                      : globalScale < 0.5  ? 0.25
-                      : globalScale < 1.5  ? 0.4
-                      : 0.55;
-
-          const width = globalScale < 0.15 ? 0.1 : globalScale < 0.5 ? 0.2 : globalScale < 1.5 ? 0.4 : 0.7;
-
-          ctx.beginPath();
-          ctx.moveTo(src.x, src.y);
-          ctx.lineTo(tgt.x, tgt.y);
-          ctx.strokeStyle = `rgba(120,115,110,${alpha})`;
-          ctx.lineWidth = width / globalScale;
-          ctx.stroke();
-        }}
+        linkColor={() => 'rgba(255,255,255,0.15)'}
+        linkWidth={0.2}
+        linkOpacity={0.3}
         enableNodeDrag={true}
-        cooldownTime={4000}
-        warmupTicks={80}
-        d3AlphaDecay={0.03}
-        d3VelocityDecay={0.4}
-        minZoom={0.05}
-        maxZoom={20}
+        enableNavigationControls={true}
+        showNavInfo={false}
+        backgroundColor="#0f0f1a"
+        cooldownTime={5000}
+        warmupTicks={200}
+        d3AlphaDecay={0.02}
+        d3VelocityDecay={0.3}
+        numDimensions={2}
         width={dimensions.width}
         height={dimensions.height}
       />
