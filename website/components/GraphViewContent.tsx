@@ -130,9 +130,9 @@ export default function GraphView({ data }: { data: GraphData }) {
   // Keyboard controls
   useEffect(() => {
     const keysDown = new Set<string>();
-    const PAN_SPEED = 20;
-    const ZOOM_SPEED = 50;
-    const ROTATE_SPEED = 0.03;
+    const PAN_SPEED = 60;
+    const ZOOM_SPEED = 120;
+    const ROTATE_SPEED = 0.08;
     let animFrame: number;
 
     function tick() {
@@ -189,7 +189,7 @@ export default function GraphView({ data }: { data: GraphData }) {
 
       // Home: reset view
       if (keysDown.has('home')) {
-        fg.zoomToFit(400, 40);
+        fg.zoomToFit(200, 40);
         keysDown.delete('home');
         animFrame = requestAnimationFrame(tick);
         return;
@@ -318,7 +318,7 @@ export default function GraphView({ data }: { data: GraphData }) {
       graphRef.current.cameraPosition(
         { x: node.x, y: node.y, z: distance },
         { x: node.x, y: node.y, z: 0 },
-        800
+        300
       );
     }
   }, []);
@@ -334,7 +334,7 @@ export default function GraphView({ data }: { data: GraphData }) {
     setFocusedNode(null);
     setContextMenu(null);
     if (graphRef.current) {
-      graphRef.current.zoomToFit(400, 40);
+      graphRef.current.zoomToFit(200, 40);
     }
   }, []);
 
@@ -494,10 +494,10 @@ export default function GraphView({ data }: { data: GraphData }) {
         enableNavigationControls={true}
         showNavInfo={false}
         backgroundColor="#0f0f1a"
-        cooldownTime={5000}
-        warmupTicks={200}
-        d3AlphaDecay={0.02}
-        d3VelocityDecay={0.3}
+        cooldownTime={3000}
+        warmupTicks={300}
+        d3AlphaDecay={0.05}
+        d3VelocityDecay={0.4}
         numDimensions={2}
         width={dimensions.width}
         height={dimensions.height}
