@@ -127,6 +127,129 @@ export default function GraphView({ data }: { data: GraphData }) {
     return () => window.removeEventListener('click', handleClick);
   }, []);
 
+  // Keyboard controls
+  useEffect(() => {
+    const keysDown = new Set<string>();
+    const PAN_SPEED = 20;
+    const ZOOM_SPEED = 50;
+    const ROTATE_SPEED = 0.03;
+    let animFrame: number;
+
+    function tick() {
+      const fg = graphRef.current;
+      if (!fg || keysDown.size === 0) { animFrame = 0; return; }
+
+      const cam = fg.camera();
+      const pos = fg.cameraPosition();
+      if (!cam || !pos) { animFrame = requestAnimationFrame(tick); return; }
+
+      let dx = 0, dy = 0, dz = 0;
+
+      // WASD / Arrow keys: pan
+      if (keysDown.has('arrowleft') || keysDown.has('a')) dx -= PAN_SPEED;
+      if (keysDown.has('arrowright') || keysDown.has('d')) dx += PAN_SPEED;
+      if (keysDown.has('arrowup') || keysDown.has('w')) dy += PAN_SPEED;
+      if (keysDown.has('arrowdown') || keysDown.has('s')) dy -= PAN_SPEED;
+
+      // +/- or E/Q: zoom
+      if (keysDown.has('equal') || keysDown.has('+') || keysDown.has('e')) dz -= ZOOM_SPEED;
+      if (keysDown.has('minus') || keysDown.has('-') || keysDown.has('q')) dz += ZOOM_SPEED;
+
+      // R/F: rotate (tilt camera around Z axis for a 3D perspective peek)
+      if (keysDown.has('r')) {
+        const controls = fg.controls();
+        if (controls) {
+          controls.autoRotate = false;
+          const target = controls.target;
+          const angle = ROTATE_SPEED;
+          const cx = pos.x - target.x;
+          const cy = pos.y - target.y;
+          const newX = cx * Math.cos(angle) - cy * Math.sin(angle) + target.x;
+          const newY = cx * Math.sin(angle) + cy * Math.cos(angle) + target.y;
+          fg.cameraPosition({ x: newX, y: newY, z: pos.z }, target, 0);
+          animFrame = requestAnimationFrame(tick);
+          return;
+        }
+      }
+      if (keysDown.has('f')) {
+        const controls = fg.controls();
+        if (controls) {
+          controls.autoRotate = false;
+          const target = controls.target;
+          const angle = -ROTATE_SPEED;
+          const cx = pos.x - target.x;
+          const cy = pos.y - target.y;
+          const newX = cx * Math.cos(angle) - cy * Math.sin(angle) + target.x;
+          const newY = cx * Math.sin(angle) + cy * Math.cos(angle) + target.y;
+          fg.cameraPosition({ x: newX, y: newY, z: pos.z }, target, 0);
+          animFrame = requestAnimationFrame(tick);
+          return;
+        }
+      }
+
+      // Home: reset view
+      if (keysDown.has('home')) {
+        fg.zoomToFit(400, 40);
+        keysDown.delete('home');
+        animFrame = requestAnimationFrame(tick);
+        return;
+      }
+
+      if (dx !== 0 || dy !== 0 || dz !== 0) {
+        // Scale pan speed with zoom distance
+        const zoomFactor = Math.max(pos.z / 1000, 0.1);
+        fg.cameraPosition(
+          { x: pos.x + dx * zoomFactor, y: pos.y + dy * zoomFactor, z: Math.max(50, pos.z + dz * zoomFactor) },
+          undefined,
+          0
+        );
+      }
+
+      animFrame = requestAnimationFrame(tick);
+    }
+
+    function onKeyDown(e: KeyboardEvent) {
+      // Don't capture if typing in an input
+      if ((e.target as HTMLElement)?.tagName === 'INPUT' || (e.target as HTMLElement)?.tagName === 'SELECT') return;
+
+      const key = e.key.toLowerCase();
+      const handled = ['arrowleft','arrowright','arrowup','arrowdown','w','a','s','d','e','q','r','f','equal','minus','+','-','home'];
+      if (handled.includes(key)) {
+        e.preventDefault();
+        keysDown.add(key);
+        if (!animFrame) animFrame = requestAnimationFrame(tick);
+      }
+
+      // Space: toggle labels
+      if (key === ' ') {
+        e.preventDefault();
+        setShowLabels(prev => !prev);
+      }
+      // Escape: unfocus / close menu
+      if (key === 'escape') {
+        setFocusedNode(null);
+        setContextMenu(null);
+        graphRef.current?.zoomToFit(400, 40);
+      }
+    }
+
+    function onKeyUp(e: KeyboardEvent) {
+      keysDown.delete(e.key.toLowerCase());
+      if (keysDown.size === 0 && animFrame) {
+        cancelAnimationFrame(animFrame);
+        animFrame = 0;
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('keyup', onKeyUp);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keyup', onKeyUp);
+      if (animFrame) cancelAnimationFrame(animFrame);
+    };
+  }, []);
+
   // Configure forces and camera on mount
   useEffect(() => {
     if (!graphRef.current) return;
@@ -267,8 +390,8 @@ export default function GraphView({ data }: { data: GraphData }) {
         >
           Reset
         </button>
-        <span className="text-xs text-white/60 bg-black/30 px-2 py-1 rounded backdrop-blur-sm ml-auto hidden sm:inline">
-          {graphData.nodes.length.toLocaleString()} nodes / {graphData.links.length.toLocaleString()} links (WebGL)
+        <span className="text-xs text-white/60 bg-black/30 px-2 py-1 rounded backdrop-blur-sm ml-auto hidden sm:inline" title="WASD/Arrows: pan, E/Q: zoom, R/F: rotate, Space: labels, Home: reset, Esc: unfocus">
+          {graphData.nodes.length.toLocaleString()} nodes / {graphData.links.length.toLocaleString()} links (WebGL) | ? keys
         </span>
       </div>
 
