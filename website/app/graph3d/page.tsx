@@ -1,13 +1,6 @@
 import { getGraphData, type EntityNode } from "../../lib/db";
-import dynamic from "next/dynamic";
+import Graph3DRenderer from "../../components/Graph3DRenderer";
 import Link from "next/link";
-
-const Graph3DRenderer = dynamic(() => import('../../components/Graph3DViewContent'), {
-  ssr: false,
-  loading: () => <div className="w-full h-[600px] bg-[#0f0f1a] animate-pulse rounded-lg flex items-center justify-center border border-parchment-dark">
-    <span className="text-white/40 italic">Initializing 3D knowledge graph...</span>
-  </div>
-});
 
 export default async function Graph3DPage() {
   const data = await getGraphData();
