@@ -194,7 +194,7 @@ Legend: [x] = done, [ ] = not done
 
 | Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
 |-------|-----|------|-----------|--------|----------|-------|
-| Rebecca Garland | 31 | [ ] | [ ] | [ ] | [ ] | No tree. Also Erin Brannigan shared |
+| Rebecca Garland | 31 | [x] NO TREE | [x] 29% Scottish, **58% Irish** (22% Munster, 17% Leinster, 11% Donegal, 8% Connacht), 6% C Italy, 0% Aboriginal | [x] Naumanen 226 (30), M.E. 67 (21), Leigh Glass 59 (23), Lynn81149 53 (26), J.D. 34 (28), Clayton Seymour | [x] | Lynn81149/Naumanen network. Very Irish. |
 | Kevin Hall | 25 | [ ] | [ ] | [ ] | [ ] | Unlinked tree |
 | mpeck676 | 23 | [ ] | [ ] | [ ] | [ ] | No tree |
 | Marianne Stewart | ? | [ ] | [ ] | [ ] | [ ] | Managed by Ralph |
@@ -212,7 +212,7 @@ Legend: [x] = done, [ ] = not done
 
 | Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
 |-------|-----|------|-----------|--------|----------|-------|
-| indradegaine | 31 | [ ] | [ ] | [ ] | [ ] | Private unlinked tree |
+| indradegaine | 31 | [x] PRIVATE unlinked | [x] 27% N Wales, 16% E Midlands, 11% Scottish, **27% West African**, 0% Aboriginal | [x] M Hughes 29 (38), **Marci Grell 29 (111=3C)**, **Carol Gray Gauthier 28 (3469=MOTHER!)**, M Denise Desmond 27 (33), **justin grell 26 (52)**, Kathryn Dodson 26 | [x] | Carol is MOTHER. Grell family. 27% African. Evans/Dodson cluster. |
 | M Hughes | 29 | [ ] | [ ] | [ ] | [ ] | Private linked tree |
 | Carol Gray Gauthier | 28 | [ ] | [ ] | [ ] | [ ] | Unlinked tree |
 | M. Denise Desmond | 27 | [ ] | [ ] | [ ] | [ ] | No tree |
@@ -232,6 +232,7 @@ Legend: [x] = done, [ ] = not done
 | Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
 |-------|-----|------|-----------|--------|----------|-------|
 | Leigh Glass | 59 | [x] Unlinked 41 ppl: Glass, Linington | [x] 44% SE England, 19% Scottish, 10% N Wales, 8% Netherlands, 0% Aboriginal | [x] Shale 759 (52), **Philip Pitt 257 (97!)**, **Naumanen 226 (149!)**, Jessica Pitt 204 (41), Stephanie Pitt 201 (41), Eric Pitt 163 | [ ] | Deep Pitt/Noble. 97cM w/ Philip Pitt, 149cM w/ Naumanen |
+| RONHARPER101 | 33 | [x] 20 ppl: Harper, McGraw | [x] 39% SE England, 33% Scottish, 5% Sweden, 0% Aboriginal | [x] Shale 759 (26), rose3599 581 (25), M.E. 67 (48!), Leigh Glass 59 (40!), Lynn81149 53, RaymondGee84 34 | [x] | Lynn81149/Naumanen network. |
 | maureen king | 30 | [ ] | [ ] | [ ] | [ ] | Found via helenbannerman1 shared. Public tree |
 | Patrick Kohler | 15 | [ ] | [ ] | [ ] | [ ] | Found via Alex Monsrud shared. Public tree (Roberta Kohler) |
 | Brian Kohler | 15 | [ ] | [ ] | [ ] | [ ] | Found via Alex Monsrud shared. Public tree |
