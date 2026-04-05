@@ -195,7 +195,7 @@ Legend: [x] = done, [ ] = not done
 | Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
 |-------|-----|------|-----------|--------|----------|-------|
 | Rebecca Garland | 31 | [x] NO TREE | [x] 29% Scottish, **58% Irish** (22% Munster, 17% Leinster, 11% Donegal, 8% Connacht), 6% C Italy, 0% Aboriginal | [x] Naumanen 226 (30), M.E. 67 (21), Leigh Glass 59 (23), Lynn81149 53 (26), J.D. 34 (28), Clayton Seymour | [x] | Lynn81149/Naumanen network. Very Irish. |
-| Kevin Hall | 25 | [ ] | [ ] | [ ] | [ ] | Unlinked tree |
+| Kevin Hall | 25 | [x] Unlinked tree | [x] **47% Scottish**, 30% SE England, 9% N Wales, 0% Aboriginal | [x] Naumanen 226 (30), Lynn81149 53 (32), L.J. 35 (23), RaymondGee84 34 (24), J.D. 34 (34), Rebecca Garland 31 | [x] | Lynn81149/Naumanen network. Very Scottish. |
 | mpeck676 | 23 | [ ] | [ ] | [ ] | [ ] | No tree |
 | Marianne Stewart | ? | [ ] | [ ] | [ ] | [ ] | Managed by Ralph |
 
@@ -213,7 +213,7 @@ Legend: [x] = done, [ ] = not done
 | Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
 |-------|-----|------|-----------|--------|----------|-------|
 | indradegaine | 31 | [x] PRIVATE unlinked | [x] 27% N Wales, 16% E Midlands, 11% Scottish, **27% West African**, 0% Aboriginal | [x] M Hughes 29 (38), **Marci Grell 29 (111=3C)**, **Carol Gray Gauthier 28 (3469=MOTHER!)**, M Denise Desmond 27 (33), **justin grell 26 (52)**, Kathryn Dodson 26 | [x] | Carol is MOTHER. Grell family. 27% African. Evans/Dodson cluster. |
-| M Hughes | 29 | [ ] | [ ] | [ ] | [ ] | Private linked tree |
+| M Hughes | 29 | [x] PRIVATE 195 ppl. Also Tom Hughes 11 P1, Adam Hughes 10 P1 | [x] 33% N Wales, **39% Italian** (16% C Italy, 12% NW Italy, 11% NE Italy), 0% Aboriginal | [x] indradegaine 31 (38), Marci Grell 29 (29), Carol Gray Gauthier 28 (38), M Denise Desmond 27 (26), justin grell 26 (28), Kathryn Dodson 26 | [x] | Evans/Dodson/Gauthier/Grell cluster. Welsh/Italian. 3 Hughes matches. |
 | Carol Gray Gauthier | 28 | [ ] | [ ] | [ ] | [ ] | Unlinked tree |
 | M. Denise Desmond | 27 | [ ] | [ ] | [ ] | [ ] | No tree |
 | Kathryn Dodson | 26 | [ ] | [ ] | [ ] | [ ] | Also appeared in Connolly matches |
