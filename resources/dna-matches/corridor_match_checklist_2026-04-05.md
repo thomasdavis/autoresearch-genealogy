@@ -265,12 +265,25 @@ The Nunn surname in Aboriginal families comes from the white Nunn family at Nunn
 
 ## SUMMARY STATS
 
-- **Total P1 matches identified**: ~90 (including newly discovered via shared matches)
-- **Fully explored (tree + ethnicity + shared)**: 28
-- **Ingested into GOKS**: 19 (deep exploration file covers most)
-- **Remaining to explore**: ~62
-- **New clusters found**: 7 (Lynn81149, Meeks, dorsetpaul98, Aspinall, Bradshaw, Evans/Dodson, Ittner/Barlow)
-- **Matches with 0% Aboriginal so far**: 28/28 (100%)
-- **KEY FINDING**: giantsnowball (18 cM P1) shares ONLY Hezron Murgha = connects through NELLIE'S LINE
-- **KEY FINDING**: Debbie Ittner has **Barlow** in tree (Jhinna Murgha's birth surname)
-- **PRIORITY**: Leigh Glass (59 cM P1) discovered via G.R. shared matches, not yet explored
+- **Total P1 matches identified**: ~100+ (including newly discovered via shared matches)
+- **Fully explored (tree + ethnicity + shared)**: 73
+- **Individual corridor files**: 58
+- **Ingested into GOKS**: all explored matches
+- **Remaining to explore**: ~15-20 (mostly low-cM cluster members + new discoveries)
+- **Clusters identified**: 10 (Pitt/Noble, Lynn81149/Naumanen, Evans/Dodson/Gauthier/Grell, Bradshaw, dorsetpaul98/VanOrsdale/Hedges, Meeks, Miller/Smith, Aspinall, Prosser/Pearcey, Ittner/Barlow)
+- **Matches with 0% Aboriginal**: 73/73 (100%)
+- **KEY FINDINGS**:
+  - giantsnowball (18 cM P1): ONLY shared match = Hezron Murgha (Nellie's line)
+  - WillandWendy2: PROSSER x4 + Helen PEARCEY in shared (corridor surnames!)
+  - lorraineemerson90: connects to Davis cluster, Munn in tree, 68% Welsh
+  - Allayna Moretti: PARSONS in tree (Rossville miners)
+  - Patricia Hickox Hunt: REYNOLDS in tree, bridges Meeks + Pitt/Noble
+  - Susan Palmer: DAVIES + ROSINA in tree, 50% Welsh
+  - Debbie Ittner: BARLOW in tree (Murgha birth surname)
+  - Brandi Howard: HADFIELD (=Hatfield) in tree + Patricia Ann Davis Kruger in shared
+  - Clayton Seymour: PEARCE in tree
+  - hbquijano: McCay + Jesse Davis Witt in tree
+  - gaelsn: bridges Davis cluster + Drake/Whiteley, 56% Irish
+  - RaymondGee84 + RONHARPER101: both have McGraw in trees
+  - Evans/Dodson cluster has Italian component (Evans 19%, M Hughes 39%)
+  - j_vidakovic2020: 46% NW Balkans (matching Lisa's 49%)
