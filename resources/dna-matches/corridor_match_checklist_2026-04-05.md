@@ -162,10 +162,10 @@ Legend: [x] = done, [ ] = not done
 
 | Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
 |-------|-----|------|-----------|--------|----------|-------|
-| Sandra Meeks | 22 | [ ] | [ ] | [ ] | [ ] | No tree |
-| pdo53 | 22 | [ ] | [ ] | [ ] | [ ] | Public tree |
-| MICHAEL DANIELS | 21 | [ ] | [ ] | [ ] | [ ] | No tree |
-| Michael Meeks | 19 | [ ] | [ ] | [ ] | [ ] | Public tree |
+| Sandra Meeks | 22 | [x] NO TREE | [x] 16% Scottish, 16% E Midlands, 14% SE England, 12% Devon, 0% Aboriginal | [x] rose3599 581 (24), Rochelle Pitt 214 (32), Jessica Pitt 204 (21), Sophie Pitt 143 (20), J.B. 28 (31), S.J. 27 | [x] | Pitt/Noble + J.B./Mohn sub-cluster. Mixed English/Irish. |
+| pdo53 | 22 | [x] 2 ppl (empty) | [x] 61% SE England, 8% N Wales, 7% Scottish, 6% S Wales, 0% Aboriginal | [x] rose3599 581 (24), Rochelle Pitt 214 (29), Jessica Pitt 204 (21), Sophie Pitt 143 (20), J.B. 28 (31), S.J. 27 (38) | [x] | Pitt/Noble + J.B./Mohn. Same as Sandra Meeks. Very English. |
+| MICHAEL DANIELS | 21 | [x] NO TREE | [x] Shared: 6% S Wales, 5% Scottish, 2% Munster, 0% Aboriginal | [x] Jessica Pitt 204 (21), Sophie Pitt 143 (21), J.B. 28 (24), S.J. 27 (22), BRIAN BURNS 27 (24), Alan Mohn 26 | [x] | Pitt/Noble + J.B./Mohn. Same as Sandra Meeks/pdo53. |
+| Michael Meeks | 19 | [x] 244 ppl: Meeks, Townsend, Lowe, Adkins, Nasworthy, Curl, Ridgdill | [x] 31% W Midlands, 22% Devon, 17% Scottish, 0% Aboriginal | [x] rose3599 581 (24), Rochelle Pitt 214 (32), Jessica Pitt 204 (21), Sophie Pitt 143 (20), J.B. 28 (30), S.J. 27 | [x] | Pitt/Noble. American South tree. English Midlands/Devon. |
 | Barbara Meeks | 19 | [ ] | [ ] | [ ] | [ ] | No tree |
 | Angelique Petersen | 18 | [ ] | [ ] | [ ] | [ ] | Public tree |
 
