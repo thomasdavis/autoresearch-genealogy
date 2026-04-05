@@ -26,9 +26,9 @@ Legend: [x] = done, [ ] = not done
 | Alex Monsrud | 13 | [x] 693 ppl: Monsrud, Larson, Sluka, Shea, Petrie, Redman | [x] 4% Scottish, 11% Munster (shared only), 0% Aboriginal | [x] Patrick Kohler 15 P1, Brian Kohler 15 P1, Pattie Shea 8 P1 (aunt) | [ ] | Kohler sub-cluster. Also in Olufson search |
 | Hazel Miller | 11 | [x] PRIVATE 2,819 ppl | [x] 32% SE England, 22% N Wales, 13% W Midlands, 11% Munster, 8% Sweden, 0% Aboriginal | [x] R.S. 11, Daniel Bond 11, Cheryl Jamieson 11, Ean Barton 11, Sarah Roper 11, Lynnette Dwyer 11 (all P1, all 11cM!) | [x] | NEW Miller cluster. 6 shared all at 11cM. Separate line. |
 | Unknown (9cM) | 9 | [ ] | [ ] | [ ] | [ ] | 6,565 ppl tree |
-| Angela DeNike | 8 | [ ] | [ ] | [ ] | [ ] | 819 ppl tree |
-| Brandi Howard | 8 | [ ] | [ ] | [ ] | [ ] | 913 ppl tree |
-| Lisa Beale | 8 | [ ] | [ ] | [ ] | [ ] | 243 ppl tree |
+| Angela DeNike | 8 | [x] 819 ppl: Rosenberger, Jackson, Stevens, Frönsdahl, Nelson, Bierwirth, Balzer | [x] 19% Norway, 18% W Midlands, 14% SE England, 10% Sweden, 0% Aboriginal | [x] snazzy3 13, Robert VanOrsdale 12, Dolores Simburger 12, Michelle Dickson 12, Charles Vanorsdale 12, jenlfritts 12 (all P1) | [x] | VanOrsdale cluster. Scandinavian/English. Cross-match w/ ODaniel. |
+| Brandi Howard | 8 | [x] 913 ppl: Howard, Haneise, Palmer, **Hadfield**, Paskett, Morgan, Henderson | [x] 26% W Midlands, 23% Scottish, 15% SE England, 0% Aboriginal | [x] Charlene Hill Goree 9, **Patricia Ann Davis Kruger 9**, Timothy Johnson 9, Mackenzie Howard 9 (sister 2531cM), Lindy Anders 8 | [x] | **HADFIELD in tree** (=Hatfield). **Davis** + **Johnson** in shared. |
+| Lisa Beale | 8 | [x] 243 ppl: Thorne, Strachan, Standen, Ling, Thompson, Flay, Elliott | [x] 63% SE England, 16% NE England, 11% W Midlands, 0% Aboriginal | [x] NO SHARED MATCHES | [x] | Isolated. Very English. |
 
 ## HISLOP (Bert Hislop "married to native woman", Bloomfield)
 
@@ -243,13 +243,13 @@ Legend: [x] = done, [ ] = not done
 | Mundy/Munn | Mundy Munn (d.1954 age 89, Bloomfield), Munday/Monday Nunn (Kukudungero) | Bloomfield, Rossville | SEARCHED. **lorraineemerson90 30cM P1** (connects to Davis cluster!), Ann Mohn-Brimhall 26, Lori Denton 24, jenlynthom 18 |
 | Ogilvie | Nellie Ogilvie (mother of Mundy Nunn b.1929) | Bloomfield corridor | SEARCHED. Lori Denton 24 (seen), bob_moldowan 10, Libby MacFadyen 9, Goldie Jessome 9, Maggie Mac 9, shannon beadow 8. All P1. |
 | Springvale | Dickie Springvale (brother of Mundy Nunn, EKY apical) | Bloomfield corridor | SEARCHED. **Clayton Seymour 30 P1** [x] explored: 251 ppl, **Pearce** in tree, Pitt/Noble cluster. FSmum 15 P1 (6,471 ppl tree) not yet explored. |
-| Johnson | Philip Johnson (sawmill, Bloomfield) | Bloomfield | NOT YET SEARCHED |
-| Wilson | Wilson (selector, Bloomfield/China Camp) | Bloomfield | NOT YET SEARCHED |
-| Rix | Rix (mining camp, Bloomfield Tin Mines) | Bloomfield | NOT YET SEARCHED |
-| Gifford | George Gifford (1885 gazette, Bloomfield River) | Bloomfield | NOT YET SEARCHED |
-| Mason | H.A. Mason (1885 gazette, Bloomfield River) | Bloomfield | NOT YET SEARCHED |
-| Scott | Thomas Scott (1885 gazette, Bloomfield) | Bloomfield | NOT YET SEARCHED |
-| Asmundsen | Asmundsen/Osmondsen (selector, Bloomfield) | Bloomfield | NOT YET SEARCHED |
+| Johnson | Philip Johnson (sawmill, Bloomfield) | Bloomfield | SEARCHED. 6 P1: **gaelsn 25 P1** (NEW!), Lori Denton 24 (seen), allan thomas 21 (seen), **T.H. (nicmunoz) 20 P1** (NEW!), Lenny Frazier 17 (explored), **Sandy Hayden 17 P1** (NEW!) |
+| Wilson | Wilson (selector, Bloomfield/China Camp) | Bloomfield | SEARCHED. 7 P1. L.J. 35 (seen). Common surname, mostly noise. |
+| Rix | Rix (mining camp, Bloomfield Tin Mines) | Bloomfield | SEARCHED. 5 P1. Need to identify specific matches. |
+| Gifford | George Gifford (1885 gazette, Bloomfield River) | Bloomfield | SEARCHED. 6 P1. Need to identify specific matches. |
+| Mason | H.A. Mason (1885 gazette, Bloomfield River) | Bloomfield | NOT YET SEARCHED (but Jonathan ODaniel has Mason in tree) |
+| Scott | Thomas Scott (1885 gazette, Bloomfield) | Bloomfield | SEARCHED. 12 P1. Common surname. |
+| Asmundsen | Asmundsen/Osmondsen (selector, Bloomfield) | Bloomfield | SEARCHED. **NO MATCHES.** |
 | Mujala | Sisters Mujala and Rosie (EKY native title, Rosie's sister) | EKY country | NOT YET SEARCHED |
 
 ## MUNDY NUNN / MUNN RESEARCH NOTES
