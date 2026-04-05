@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edgar Father Candidate Ranking: Reynolds Nephews</title>
+  <style>
+    :root {
+      --bg: #efe8dc;
+      --paper: #fffaf2;
+      --ink: #2e251d;
+      --muted: #6d6258;
+      --line: #d2c1aa;
+      --hero: #143f4a;
+      --hero-2: #7f4d17;
+      --good: #155e3a;
+      --good-bg: #d9f0e2;
+      --weak: #8a6b0d;
+      --weak-bg: #fff0ba;
+      --bad: #a24a1d;
+      --bad-bg: #fde0cd;
+      --out: #7f2020;
+      --out-bg: #f3d4d4;
+      --mixed: #816b3b;
+      --mixed-bg: #efe6cb;
+      --baseline: #dbe8ec;
+      --card-shadow: 0 16px 36px rgba(46, 37, 29, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+      background:
+        radial-gradient(circle at top left, rgba(20, 63, 74, 0.08), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(127, 77, 23, 0.08), transparent 28%),
+        var(--bg);
+    }
+
+    main {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 32px 22px 56px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 2.3rem;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .lede {
+      max-width: 980px;
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 1.03rem;
+      line-height: 1.5;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid rgba(46, 37, 29, 0.1);
+      border-radius: 22px;
+      box-shadow: var(--card-shadow);
+      padding: 18px 18px 20px;
+      margin-bottom: 18px;
+    }
+
+    .baseline {
+      border-left: 6px solid var(--hero);
+      background: linear-gradient(135deg, rgba(20, 63, 74, 0.08), transparent 50%), var(--paper);
+    }
+
+    .baseline h2,
+    .section-title {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      line-height: 1.15;
+    }
+
+    .baseline-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.79rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .badge-good { background: var(--good-bg); color: var(--good); }
+    .badge-weak { background: var(--weak-bg); color: var(--weak); }
+    .badge-bad { background: var(--bad-bg); color: var(--bad); }
+    .badge-out { background: var(--out-bg); color: var(--out); }
+    .badge-mixed { background: var(--mixed-bg); color: var(--mixed); }
+
+    .baseline-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .stat {
+      background: var(--baseline);
+      border-radius: 14px;
+      padding: 10px 12px;
+    }
+
+    .stat .label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .stat .value {
+      display: block;
+      margin-top: 4px;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .baseline ul {
+      margin: 10px 0 0 18px;
+      padding: 0;
+      line-height: 1.45;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 14px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .legend li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(46, 37, 29, 0.08);
+      background: rgba(255, 255, 255, 0.7);
+      font-size: 0.92rem;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(46, 37, 29, 0.16);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 16px;
+      border: 1px solid rgba(46, 37, 29, 0.08);
+      background: #fffcf7;
+    }
+
+    table {
+      width: 100%;
+      min-width: 1080px;
+      border-collapse: collapse;
+      font-variant-numeric: tabular-nums;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background: #f6efe3;
+      z-index: 1;
+      padding: 11px 9px;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 2px solid var(--line);
+    }
+
+    tbody td {
+      border-top: 1px solid rgba(210, 193, 170, 0.6);
+      border-right: 1px solid rgba(210, 193, 170, 0.38);
+      padding: 10px 8px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    tbody td:first-child,
+    tbody td:nth-child(2) {
+      text-align: left;
+      background: #fbf5ec;
+      font-weight: 700;
+    }
+
+    .cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      min-height: 54px;
+      justify-content: center;
+    }
+
+    .cell .age {
+      font-size: 1.02rem;
+      font-weight: 700;
+    }
+
+    .cell .band {
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .good { background: var(--good-bg); color: var(--good); }
+    .weak { background: var(--weak-bg); color: var(--weak); }
+    .bad { background: var(--bad-bg); color: var(--bad); }
+    .out { background: var(--out-bg); color: var(--out); }
+    .mixed { background: var(--mixed-bg); color: var(--mixed); }
+
+    .rank-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .rank-card {
+      border-radius: 18px;
+      border: 1px solid rgba(46, 37, 29, 0.08);
+      background: rgba(255, 255, 255, 0.72);
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(46, 37, 29, 0.06);
+    }
+
+    .rank-head {
+      padding: 14px 16px 12px;
+      border-bottom: 1px solid rgba(46, 37, 29, 0.08);
+    }
+
+    .rank-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .rank-num {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .rank-name {
+      margin: 0;
+      font-size: 1.15rem;
+      line-height: 1.15;
+    }
+
+    .rank-branch {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .rank-body {
+      padding: 14px 16px 16px;
+    }
+
+    .rank-body p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .reason-list {
+      margin: 0 0 10px 18px;
+      padding: 0;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
+    .score-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .score-box {
+      border-radius: 12px;
+      padding: 9px 10px;
+      background: #f7efe2;
+      text-align: center;
+    }
+
+    .score-box .small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.73rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .score-box .big {
+      display: block;
+      margin-top: 3px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .excluded {
+      margin-top: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 920px) {
+      main { padding: 24px 12px 42px; }
+      h1 { font-size: 1.9rem; }
+      .baseline-grid { grid-template-columns: 1fr; }
+      .baseline-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Edgar Father Candidate Ranking: Reynolds Nephews</h1>
+    <p class="lede">
+      This page ranks the Reynolds nephews only, with <strong>Owen Reynolds</strong> shown as the baseline comparison.
+      The three Edgar anchors are the same ones already in use in the project:
+      <strong>1887</strong> from the 1909 marriage age 22, <strong>1890</strong> from the delayed registration,
+      and <strong>1904</strong> from the baptism-age reading. Earlier anchors are weighted more heavily than the 1904 model.
+    </p>
+
+    <section class="panel baseline">
+      <div class="baseline-grid">
+        <div>
+          <span class="badge badge-good">Baseline Strongest Reynolds Fit</span>
+          <h2>Owen Reynolds</h2>
+          <p class="rank-branch">Cooktown / Palmer corridor; adult across the whole Edgar birth range</p>
+          <div class="baseline-stats">
+            <div class="stat">
+              <span class="label">1887 Anchor</span>
+              <span class="value">42</span>
+            </div>
+            <div class="stat">
+              <span class="label">1890 Anchor</span>
+              <span class="value">45</span>
+            </div>
+            <div class="stat">
+              <span class="label">1904 Anchor</span>
+              <span class="value">59</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <ul>
+            <li>He is the only Reynolds male who stays fully adult and plausible across the earliest Edgar models.</li>
+            <li>He is also the Reynolds man with the strongest Cooktown / Palmer / Middle Laura placement, which matters more than raw age alone.</li>
+            <li>He is still not proved as Edgar’s father: the documentary problem remains George Brackenridge on the delayed birth side and George Davis on the death side.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 class="section-title">Anchor Matrix</h2>
+      <ul class="legend">
+        <li><span class="dot good"></span>Adult-plausible</li>
+        <li><span class="dot weak"></span>Teen / weak</li>
+        <li><span class="dot bad"></span>Child / very weak</li>
+        <li><span class="dot out"></span>Ruled out</li>
+        <li><span class="dot mixed"></span>Ambiguous or disputed</li>
+      </ul>
+      <div class="table-wrap">
+        <table aria-label="Candidate anchor matrix">
+          <thead>
+            <tr>
+              <th>Candidate</th>
+              <th>Branch</th>
+              <th>1887<br>Marriage Age Anchor</th>
+              <th>1890<br>Delayed Registration</th>
+              <th>1904<br>Baptism Model</th>
+              <th>Overall</th>
+            </tr>
+          </thead>
+          <tbody id="matrix-body"></tbody>
+        </table>
+      </div>
+      <p class="excluded">
+        Excluded from the main ranking because they died before a realistic Edgar paternity window:
+        <strong>James Reynolds</strong> son of Patrick (`1871-1879`), <strong>John Reynolds</strong> son of William (`1871-1872`),
+        and probably <strong>William Reynolds</strong> son of William (`b. 1881`, probable death `1884/C/4079`).
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2 class="section-title">Ranked Nephews With Reasoning</h2>
+      <div class="rank-grid" id="rank-grid"></div>
+    </section>
+  </main>
+
+  <script>
+    const anchors = [
+      { key: "m1887", label: "1887", year: 1887 },
+      { key: "r1890", label: "1890", year: 1890 },
+      { key: "b1904", label: "1904", year: 1904 }
+    ];
+
+    const candidates = [
+      {
+        rank: 1,
+        name: "William Owen Reynolds",
+        branch: "Patrick + Bridget Higgins branch",
+        birth: 1873,
+        overallClass: "weak",
+        overallLabel: "Best Nephew But Still Weak",
+        summary: "The strongest nephew on identity clarity and age, but still only a teenager at the two strongest Edgar anchors.",
+        reasons: [
+          "Age profile is 14 in 1887, 17 in 1890, and 31 in 1904.",
+          "BDM identity is clean: birth 1873/C/3889 and death 1946/B/5030.",
+          "He lacks Owen’s Cooktown / Palmer corridor placement, so he stays secondary even when age works."
+        ]
+      },
+      {
+        rank: 2,
+        name: "Thomas Reynolds",
+        branch: "William + Catherine Connor branch",
+        birth: 1873,
+        overallClass: "weak",
+        overallLabel: "Weak Late-Model Candidate",
+        summary: "Age is almost identical to William Owen Reynolds, but the documentary footprint is thinner.",
+        reasons: [
+          "Age profile is 14 in 1887, 17 in 1890, and 31 in 1904.",
+          "BDM identity is stable: birth 1873/C/3718 and death 1949/B/22641.",
+          "No clean Cooktown connection or stronger social link to Rosie has surfaced."
+        ]
+      },
+      {
+        rank: 3,
+        name: "Thomas Owen Reynolds",
+        branch: "James + Margaret Logue branch",
+        birth: 1874,
+        overallClass: "weak",
+        overallLabel: "Weak Late-Model Candidate",
+        summary: "A close age fit to the older nephews, but still too young for comfort if Edgar was born in the late 1880s.",
+        reasons: [
+          "Age profile is 13 in 1887, 16 in 1890, and 30 in 1904.",
+          "BDM identity is clean: birth 1874/C/4398 and death 1941/C/1511.",
+          "Like the other nephews, he is a Mowbray-side man without direct Cooktown / Rosie evidence."
+        ]
+      },
+      {
+        rank: 4,
+        name: "James Patrick Reynolds",
+        branch: "James branch, but birth identity disputed",
+        birthRange: [1874, 1878],
+        overallClass: "mixed",
+        overallLabel: "Ambiguous And Weak",
+        summary: "Adult life is clear, but the birth record now conflicts with the old family-history assumption.",
+        reasons: [
+          "The live BDM API gives a birth in 1878 to James Reynolds and Margaret Foyne, not Margaret Logue.",
+          "The death record points back toward a James + Margaret pairing and implies a 1874 birth year.",
+          "That leaves him somewhere between child and weak for the early Edgar anchors, and only clearly adult in 1904."
+        ]
+      },
+      {
+        rank: 5,
+        name: "Patrick Reynolds",
+        branch: "William + Catherine Connor branch",
+        birth: 1879,
+        overallClass: "bad",
+        overallLabel: "Only Works If Edgar Is Very Late",
+        summary: "A documented adult man later on, but plainly too young for the strongest Edgar models.",
+        reasons: [
+          "Age profile is 8 in 1887, 11 in 1890, and 25 in 1904.",
+          "BDM trail is strong: birth 1879/C/6097, marriage 1911/C/1506, death 1952/C/4031.",
+          "He only becomes usable if the 1904 Edgar model is forced above the earlier anchors."
+        ]
+      },
+      {
+        rank: 6,
+        name: "Francis Leslie Reynolds",
+        branch: "Patrick + Bridget Higgins branch",
+        birth: 1879,
+        overallClass: "bad",
+        overallLabel: "Very Weak",
+        summary: "Age is the same late profile as Patrick son of William, with a looser adult identity trail.",
+        reasons: [
+          "Age profile is 8 in 1887, 11 in 1890, and 25 in 1904.",
+          "The birth is clean at 1879/C/855, but later adult records are not fully isolated.",
+          "He is only even arguable if Edgar is pushed very late."
+        ]
+      },
+      {
+        rank: 7,
+        name: "Charles Edward Reynolds",
+        branch: "James + Margaret Logue branch",
+        birth: 1882,
+        overallClass: "out",
+        overallLabel: "Effectively Out",
+        summary: "He is too young for any serious early-Edgar scenario and only barely adult in the weakest 1904 model.",
+        reasons: [
+          "Age profile is 5 in 1887, 8 in 1890, and 22 in 1904.",
+          "His adult identity is excellent: birth 1882/C/7053, marriage 1917/C/144, death 1959/B/35441.",
+          "But that identity clarity does not overcome the age problem."
+        ]
+      }
+    ];
+
+    function classifyAge(age) {
+      if (age < 0) return { cls: "out", label: "Out" };
+      if (age <= 11) return { cls: "bad", label: "Child" };
+      if (age <= 17) return { cls: "weak", label: "Teen" };
+      if (age <= 49) return { cls: "good", label: "Adult" };
+      return { cls: "good", label: "Older" };
+    }
+
+    function ageDisplay(candidate, year) {
+      if (candidate.birthRange) {
+        const [earlierBirth, laterBirth] = candidate.birthRange;
+        const olderAge = year - earlierBirth;
+        const youngerAge = year - laterBirth;
+        const low = Math.min(olderAge, youngerAge);
+        const high = Math.max(olderAge, youngerAge);
+        const lowClass = classifyAge(low).cls;
+        const highClass = classifyAge(high).cls;
+        const cls = lowClass === highClass ? lowClass : "mixed";
+        const label = lowClass === highClass ? classifyAge(high).label : "Disputed";
+        return { text: `${low}-${high}`, cls, label };
+      }
+      const age = year - candidate.birth;
+      const band = classifyAge(age);
+      return { text: String(age), cls: band.cls, label: band.label };
+    }
+
+    const matrixBody = document.getElementById("matrix-body");
+    candidates.forEach(candidate => {
+      const row = document.createElement("tr");
+
+      const nameCell = document.createElement("td");
+      nameCell.textContent = candidate.name;
+      row.appendChild(nameCell);
+
+      const branchCell = document.createElement("td");
+      branchCell.textContent = candidate.branch;
+      row.appendChild(branchCell);
+
+      anchors.forEach(anchor => {
+        const cellData = ageDisplay(candidate, anchor.year);
+        const td = document.createElement("td");
+        td.className = cellData.cls;
+        td.innerHTML = `
+          <div class="cell">
+            <span class="age">${cellData.text}</span>
+            <span class="band">${cellData.label}</span>
+          </div>
+        `;
+        row.appendChild(td);
+      });
+
+      const overall = document.createElement("td");
+      overall.className = candidate.overallClass;
+      overall.innerHTML = `
+        <div class="cell">
+          <span class="age">${candidate.rank}</span>
+          <span class="band">${candidate.overallLabel}</span>
+        </div>
+      `;
+      row.appendChild(overall);
+
+      matrixBody.appendChild(row);
+    });
+
+    const rankGrid = document.getElementById("rank-grid");
+    candidates.forEach(candidate => {
+      const card = document.createElement("article");
+      card.className = "rank-card";
+
+      const scoreBoxes = anchors.map(anchor => {
+        const score = ageDisplay(candidate, anchor.year);
+        return `
+          <div class="score-box">
+            <span class="small">${anchor.label}</span>
+            <span class="big ${score.cls === 'mixed' ? '' : ''}">${score.text}</span>
+          </div>
+        `;
+      }).join("");
+
+      card.innerHTML = `
+        <div class="rank-head">
+          <div class="rank-topline">
+            <span class="rank-num">Rank ${candidate.rank}</span>
+            <span class="badge badge-${candidate.overallClass === 'good' ? 'good' : candidate.overallClass === 'weak' ? 'weak' : candidate.overallClass === 'bad' ? 'bad' : candidate.overallClass === 'out' ? 'out' : 'mixed'}">${candidate.overallLabel}</span>
+          </div>
+          <h3 class="rank-name">${candidate.name}</h3>
+          <p class="rank-branch">${candidate.branch}</p>
+        </div>
+        <div class="rank-body">
+          <p>${candidate.summary}</p>
+          <ul class="reason-list">
+            ${candidate.reasons.map(reason => `<li>${reason}</li>`).join("")}
+          </ul>
+          <div class="score-strip">${scoreBoxes}</div>
+        </div>
+      `;
+      rankGrid.appendChild(card);
+    });
+  </script>
+</body>
+</html>

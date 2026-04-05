@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edgar / Rosie / Reynolds Age Matrix With Nephews</title>
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --panel: #fffaf3;
+      --ink: #2a241d;
+      --muted: #6b6158;
+      --grid: #cfbfaa;
+      --anchor: #124b47;
+      --impossible: #7d1f1f;
+      --impossible-bg: #f6d8d8;
+      --child: #b44a1b;
+      --child-bg: #fde5d2;
+      --weak: #9a7a00;
+      --weak-bg: #fff3bf;
+      --plausible: #1e6d3d;
+      --plausible-bg: #dff4e6;
+      --older: #265a9a;
+      --older-bg: #dce9fb;
+      --head-bg: #f6eee2;
+      --family-owen: #efe3cf;
+      --family-son: #eadfc9;
+      --family-nephew: #e0ead8;
+      --family-rosie: #e6e1f1;
+      --tag-bg: #ece3d4;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(30, 109, 61, 0.08), transparent 26%),
+        radial-gradient(circle at bottom right, rgba(38, 90, 154, 0.08), transparent 26%),
+        var(--bg);
+    }
+
+    main {
+      max-width: 1700px;
+      margin: 0 auto;
+      padding: 32px 22px 48px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+      line-height: 1.1;
+    }
+
+    .intro {
+      margin: 0 0 20px;
+      max-width: 1100px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid rgba(42, 36, 29, 0.11);
+      border-radius: 18px;
+      box-shadow: 0 12px 36px rgba(42, 36, 29, 0.08);
+      padding: 18px;
+    }
+
+    .legend,
+    .family-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+
+    .legend li,
+    .family-legend li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(42, 36, 29, 0.09);
+      background: rgba(255, 255, 255, 0.72);
+      font-size: 0.94rem;
+    }
+
+    .swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(42, 36, 29, 0.2);
+      flex: 0 0 auto;
+    }
+
+    .family-box {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(42, 36, 29, 0.15);
+      flex: 0 0 auto;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(42, 36, 29, 0.08);
+      background: #fffdf9;
+    }
+
+    table {
+      width: 100%;
+      min-width: 1500px;
+      border-collapse: collapse;
+      font-variant-numeric: tabular-nums;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: var(--head-bg);
+      border-bottom: 2px solid var(--grid);
+      padding: 10px 8px;
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    thead tr:first-child th {
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(207, 191, 170, 0.8);
+    }
+
+    tbody td {
+      padding: 9px 7px;
+      text-align: center;
+      border-top: 1px solid rgba(207, 191, 170, 0.55);
+      border-right: 1px solid rgba(207, 191, 170, 0.38);
+    }
+
+    tbody tr td:first-child,
+    tbody tr td:nth-child(2) {
+      background: #fcf7ef;
+      font-weight: 700;
+    }
+
+    tbody tr.anchor td:first-child,
+    tbody tr.anchor td:nth-child(2) {
+      color: var(--anchor);
+    }
+
+    tbody tr.anchor {
+      outline: 2px solid rgba(18, 75, 71, 0.25);
+      outline-offset: -2px;
+    }
+
+    .group-owen { background: var(--family-owen) !important; }
+    .group-son { background: var(--family-son) !important; }
+    .group-nephew { background: var(--family-nephew) !important; }
+    .group-rosie { background: var(--family-rosie) !important; }
+
+    .subhead {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--anchor);
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .cell {
+      min-height: 52px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .age {
+      font-weight: 700;
+      font-size: 1.03rem;
+    }
+
+    .band {
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .impossible { background: var(--impossible-bg); color: var(--impossible); }
+    .child { background: var(--child-bg); color: var(--child); }
+    .weak { background: var(--weak-bg); color: var(--weak); }
+    .plausible { background: var(--plausible-bg); color: var(--plausible); }
+    .older { background: var(--older-bg); color: var(--older); }
+
+    .notes {
+      margin-top: 18px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .notes strong { color: var(--ink); }
+
+    @media (max-width: 860px) {
+      main { padding: 24px 12px 34px; }
+      h1 { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Edgar / Rosie / Reynolds Age Matrix With Nephews</h1>
+    <p class="intro">
+      This version keeps the original age matrix but adds Owen’s nephews from the Mowbray / Daintree Reynolds branches.
+      It is designed to answer the narrower question: if the father was not Owen himself, are the nephews better age fits
+      than Owen’s sons?
+    </p>
+
+    <section class="panel">
+      <ul class="legend">
+        <li><span class="swatch impossible"></span>Impossible</li>
+        <li><span class="swatch child"></span>Biologically possible but child</li>
+        <li><span class="swatch weak"></span>Teen / very weak</li>
+        <li><span class="swatch plausible"></span>Plausible</li>
+        <li><span class="swatch older"></span>Older but still biologically possible</li>
+      </ul>
+
+      <ul class="family-legend">
+        <li><span class="family-box" style="background: var(--family-owen)"></span>Owen</li>
+        <li><span class="family-box" style="background: var(--family-son)"></span>Owen's sons</li>
+        <li><span class="family-box" style="background: var(--family-nephew)"></span>Owen's nephews</li>
+        <li><span class="family-box" style="background: var(--family-rosie)"></span>Rosie birth models</li>
+      </ul>
+
+      <div class="table-wrap">
+        <table aria-label="Edgar birth age matrix with nephews">
+          <thead>
+            <tr>
+              <th rowspan="2">Edgar Birth</th>
+              <th rowspan="2">Anchor</th>
+              <th class="group-owen" colspan="1">Owen</th>
+              <th class="group-son" colspan="2">Owen's Sons</th>
+              <th class="group-nephew" colspan="3">Owen's Nephews</th>
+              <th class="group-rosie" colspan="4">Rosie Models</th>
+            </tr>
+            <tr>
+              <th class="group-owen">Owen<span class="subhead">b. 1845</span></th>
+              <th class="group-son">Owen Daniel<span class="subhead">b. 1878</span></th>
+              <th class="group-son">James Conners<span class="subhead">b. 1891</span></th>
+              <th class="group-nephew">Thomas Owen<span class="subhead">b. 1874</span></th>
+              <th class="group-nephew">James Patrick<span class="subhead">b. 1874</span></th>
+              <th class="group-nephew">William Owen<span class="subhead">b. 1873</span></th>
+              <th class="group-rosie">Rosie c1868</th>
+              <th class="group-rosie">Rosie c1869</th>
+              <th class="group-rosie">Rosie c1881</th>
+              <th class="group-rosie">Rosie c1888</th>
+            </tr>
+          </thead>
+          <tbody id="matrix-body"></tbody>
+        </table>
+      </div>
+
+      <div class="notes">
+        <p><strong>Anchors:</strong> <code>m22</code> = marriage age 22 implies Edgar born about 1887, <code>reg</code> = delayed birth registration implies 1890, <code>bap</code> = 1910 baptism age 6 implies 1904.</p>
+        <p><strong>BDM basis for nephews:</strong> Thomas Owen Reynolds born 27 February 1874, James Patrick Reynolds born 1874, William Owen Reynolds born 30 April 1873.</p>
+        <p><strong>Expected visual result:</strong> the sons mostly fail at the early anchors, while the nephews only become borderline teen candidates by the late 1880s and do not look fully adult-plausible until later.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const anchors = { 1887: "m22", 1890: "reg", 1904: "bap" };
+
+    const columns = [
+      { birthYear: 1845, type: "father" },
+      { birthYear: 1878, type: "father" },
+      { birthYear: 1891, type: "father" },
+      { birthYear: 1874, type: "father" },
+      { birthYear: 1874, type: "father" },
+      { birthYear: 1873, type: "father" },
+      { birthYear: 1868, type: "mother" },
+      { birthYear: 1869, type: "mother" },
+      { birthYear: 1881, type: "mother" },
+      { birthYear: 1888, type: "mother" }
+    ];
+
+    function classifyFather(age) {
+      if (age < 13) return { className: "impossible", label: "Impossible" };
+      if (age <= 15) return { className: "child", label: "Child" };
+      if (age <= 17) return { className: "weak", label: "Teen" };
+      if (age <= 59) return { className: "plausible", label: "Plausible" };
+      return { className: "older", label: "Older" };
+    }
+
+    function classifyMother(age) {
+      if (age < 12) return { className: "impossible", label: "Impossible" };
+      if (age <= 13) return { className: "child", label: "Child" };
+      if (age <= 15) return { className: "weak", label: "Teen" };
+      if (age <= 45) return { className: "plausible", label: "Plausible" };
+      return { className: "older", label: "Older" };
+    }
+
+    function classify(type, age) {
+      return type === "father" ? classifyFather(age) : classifyMother(age);
+    }
+
+    const tbody = document.getElementById("matrix-body");
+
+    for (let year = 1883; year <= 1904; year += 1) {
+      const tr = document.createElement("tr");
+      if (anchors[year]) tr.classList.add("anchor");
+
+      const yearTd = document.createElement("td");
+      yearTd.textContent = year;
+      tr.appendChild(yearTd);
+
+      const tagTd = document.createElement("td");
+      tagTd.innerHTML = anchors[year] ? `<span class="tag">${anchors[year]}</span>` : "";
+      tr.appendChild(tagTd);
+
+      for (const column of columns) {
+        const age = year - column.birthYear;
+        const band = classify(column.type, age);
+        const td = document.createElement("td");
+        td.className = band.className;
+        td.innerHTML = `
+          <div class="cell">
+            <div class="age">${age}</div>
+            <div class="band">${band.label}</div>
+          </div>
+        `;
+        tr.appendChild(td);
+      }
+
+      tbody.appendChild(tr);
+    }
+  </script>
+</body>
+</html>

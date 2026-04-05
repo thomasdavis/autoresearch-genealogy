@@ -1,0 +1,275 @@
+---
+type: checklist
+created: 2026-04-05
+source: Ancestry DNA matches for Lisa Davis
+tags: [corridor, checklist, dna-match, progress-tracker]
+---
+
+# Corridor DNA Match Checklist
+
+Every P1 match found from corridor surname searches. Tracking: Tree explored, Ethnicity checked, Shared matches captured, Ingested into GOKS.
+
+Legend: [x] = done, [ ] = not done
+
+## COLLINS (family at Bloomfield River crossing)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Alan Collins | 10 | [x] 114 ppl: Collins, Grimmett, Nash, Doherty | [x] 0% Aboriginal, Welsh/Scottish | [x] Georgie Ann Arno 9cM P1 | [x] | |
+| Eva Collins | 9 | [x] 1,520 ppl: Tyler, Cassell, Mayo, Telin, Collins | [x] 0% Aboriginal, mixed European | [x] EvaDoreen 14cM P1, fairepastymes 9cM P1 | [x] | |
+| Ann Frances Collins | 8 | [x] 14 ppl: Collins, Marmion, Phoenix, Gallagher | [x] 0% Aboriginal, 85% Irish | [x] Karen Jensen 9cM P1, John Stanley 8cM P1 (son) | [x] | |
+
+## HATFIELD (Dick, Jimmy, miners, Rossville)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Alex Monsrud | 13 | [x] 693 ppl: Monsrud, Larson, Sluka, Shea, Petrie, Redman | [x] 4% Scottish, 11% Munster (shared only), 0% Aboriginal | [x] Patrick Kohler 15 P1, Brian Kohler 15 P1, Pattie Shea 8 P1 (aunt) | [ ] | Kohler sub-cluster. Also in Olufson search |
+| Hazel Miller | 11 | [x] PRIVATE 2,819 ppl | [x] 32% SE England, 22% N Wales, 13% W Midlands, 11% Munster, 8% Sweden, 0% Aboriginal | [x] R.S. 11, Daniel Bond 11, Cheryl Jamieson 11, Ean Barton 11, Sarah Roper 11, Lynnette Dwyer 11 (all P1, all 11cM!) | [x] | NEW Miller cluster. 6 shared all at 11cM. Separate line. |
+| Unknown (9cM) | 9 | [ ] | [ ] | [ ] | [ ] | 6,565 ppl tree |
+| Angela DeNike | 8 | [ ] | [ ] | [ ] | [ ] | 819 ppl tree |
+| Brandi Howard | 8 | [ ] | [ ] | [ ] | [ ] | 913 ppl tree |
+| Lisa Beale | 8 | [ ] | [ ] | [ ] | [ ] | 243 ppl tree |
+
+## HISLOP (Bert Hislop "married to native woman", Bloomfield)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Karyn Findlay | 12 | [x] 904 ppl: Findlay, Nichol, Sawers, Vickery | [x] 72% Scottish, 0% Aboriginal | [x] Shale 759, Mabb 263, Pitts | [x] | Pitt/Noble cluster |
+| Willam W Harrell | 10 | [x] 10 ppl: Harrell, Grizzard, Hayslip | [x] Welsh/Scottish, 0% Aboriginal | [x] MEEKS CLUSTER: Sandra 22, pdo53 22, Michael Daniels 21, Michael Meeks 19, Barbara Meeks 19, Angelique 18 | [x] | NEW Meeks cluster |
+| F.M. (Fred McClure) | 10 | [x] 8,074 ppl: McClure, Rogers, Pace, O'Neil | [x] English/Scottish, 0% Aboriginal | [x] Robyn Stephenson 12, Andrew Tompkins 11, Susan Stooks 11, Jafay Parrish 10, steven_traveling 10 | [x] | Connects to David Dilley |
+| Michael Bleackley | 9 | [x] 2,758 ppl: Bleackley, Scott, Ross, Kiernan | [x] 39% Munster, 35% Scottish, 0% Aboriginal | [x] dwhalliwell 9, maramsey34 9, Mary wolfe 8 | [x] | Grandfather: Andrew Noble Ross Bleackley |
+| David Dilley | 9 | [x] 240 ppl: Dilley, O'Neal, Harms, Jackson | [x] Dutch/English/Swedish, 0% Aboriginal | [x] F.M. 10cM (40cM shared), jmmurphy75 9 P2 | [x] | Connects to F.M. |
+| dorsetpaul98 | 8 | [x] PRIVATE 4,672 ppl | [x] 37% Scottish, 0% Aboriginal | [x] NEW CLUSTER: D.W. 19, Barbara Hedges 18, David Wiese 12, Jan Stevens 12, on30ng 12, Jeffrey King 11 | [x] | NEW dorsetpaul98 cluster |
+| Delores Palmer | ? | [ ] | [ ] | [ ] | [ ] | Not yet explored |
+
+## BUHMANN (Conrad Buhmann, sawmiller AT ROMEO)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| allan thomas | 21 | [x] 4,314 ppl: Thomas, Harl, Robertson, Simmons | [x] Scottish/English, 0% Aboriginal | [x] Philip Pitt 257 (20), Jessica Pitt 204 (21), J.B. 28, S.J. 27, BRIAN BURNS 27, Alan Mohn 26 | [x] | Pitt/Noble. Also in McClean |
+| Erin Brannigan | 19 | [x] 227 ppl: Brannigan, Donnelly, Bowen, Snell | [x] 33% Munster, 20% S Wales, 0% Aboriginal | [x] Shale 759 (24), rose3599 581 (36), Philip Pitt 257 (22), Rebecca Garland 31, Liam Brannigan 17 (1747=grandfather) | [x] | Pitt/Noble |
+| G.R. (Laurie Roof) | 17 | [x] 1,482 ppl: Roof, Schoonover, Wells, Allis, Chubbuck, Coffin | [x] 34% SE England, 22% W Midlands, 9% Hebrides, 8% Netherlands, 0% Aboriginal | [x] Shale 759 (25), **Leigh Glass 59 P1 (22)**, jgish87 17, Don Sabens 17, Kathryn Baldwin 17, dgr1985 17 | [ ] | Pitt/Noble via Shale. Found NEW match: Leigh Glass 59cM P1 |
+
+## McCAW (Daniel McCaw, tin miner, China Camp)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Jane Aspinall | 23 | [x] 209 ppl: Sullivan, Pocock, Burton, Netley | [x] 77% SE England, 0% Aboriginal | [x] ryan elliott 17 (57), Allayna Moretti 17 (28), Karolyn Whatley 12, Glennis Lingard 11, Bonnie Scott 10 | [x] | NOT Pitt/Noble. Separate cluster. |
+| giantsnowball | 18 | [x] 18,887 ppl: McInnes, Proctor, Abraham, McCay, Beard, Martin | [x] Shared only: 6% Connacht, 5% Netherlands, 0% Aboriginal | [x] **HEZRON MURGHA 93cM (20cM shared)** ONLY shared match! | [ ] | **KEY FINDING: connects through NELLIE'S LINE not Pitt/Noble** |
+| hbquijano | 15 | [x] 61 ppl: Brown, Ewing, **McCay**, Witt (**Jesse Davis Witt**), Jones | [x] 33% Scottish, 22% SE England, 8% NE England, 8% Munster, 0% Aboriginal | [x] robert_bradshaw88 43 (30), **helenbannerman1 37 (31)**, Mary Bradshaw 28 (27), abirkhead 23 (36) | [ ] | McCay in tree. Bradshaw cluster. |
+
+## DOLAN (Bridget/May Dolan, Bloomfield/China Camp)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Denise Williams | 25 | [x] 7 ppl: Thibault, Dearing, Delaney | [x] Limited data, 0% Aboriginal | [x] Naumanen 226 (22), L.J. 35 (22), Rebecca Garland 31 (20), Kevin Hall 25, mpeck676 23 | [x] | Naumanen/L.J. cluster, NOT Pitt |
+| Samantha Evans | 19 | [x] PRIVATE 1,706 ppl (KPFamilyTree) | [x] 24% S Wales, 19% Central Italy, 15% Connacht, 15% Munster, 0% Aboriginal | [x] indradegaine 31 P1, M Hughes 29 P1, Carol Gray Gauthier 28 P1, M Denise Desmond 27 P1, Kathryn Dodson 26 P1 | [ ] | NOT Pitt/Noble. Separate Evans/Dodson cluster. Italian ancestry unusual. |
+
+## OLUFSON (Olufsons, store/boat, Bloomfield)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Lori Denton | 24 | [x] 3,289 ppl: Swikle, Tilley, Harry, Iverson | [x] 36% Norway, 25% Scottish, 0% Aboriginal | [x] Rochelle Pitt 214 (21), J.B. 28, S.J. 27, BRIAN BURNS 27, Alan Mohn 26, Ann Mohn-Brimhall 26 | [x] | Pitt/Noble. Cross-match in 3 searches |
+| jswild | 16 | [x] 4,753 ppl: Wild, Kane, Porter, McCullough, Adams, Knott, Göthberg | [x] 33% Scottish, 17% SE England, 14% Sweden, 14% Ashkenazi, 0% Aboriginal | [x] Lisa Ryan 16, Matthew Ryan 16, Joan Wild 16 (sister 2531cM), Brad Wild 13 (1C1R 348cM) | [x] | NOT Pitt/Noble. Wild/Ryan cluster. |
+| Alex Monsrud | 13 | [ ] | [ ] | [ ] | [ ] | Also in Hatfield. 693 ppl tree |
+| Samantha Kwiatkowski | 13 | [x] 827 ppl: Kwiatkowski, Keough, Binns, Carmody, Stange, Carlberg, Yeo, Bridges | [x] Shared: 16% Munster, 5% Connacht, 0% Aboriginal | [x] Kellie Cohen 13, Samantha Dougherty 12, Helen Kelly 12, LarrySmith46 12, Dawn Martinson 12, Jane Hobbs 12 (all P1) | [x] | NOT Pitt/Noble. Own cluster. Polish/Irish/English. |
+
+## BAIRD (Robert Baird, selector, Bloomfield/China Camp)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| R.S. (Lisa Spry) | 30 | [ ] | [ ] | [ ] | [ ] | PRIVATE 890 ppl tree |
+| Ann Mohn-Brimhall | 26 | [ ] | [ ] | [ ] | [ ] | 106 ppl tree. Also shared match of Lori Denton |
+| Many more 8-20 cM | - | [ ] | [ ] | [ ] | [ ] | Common surname, many results |
+
+## KERR (Kerr family, miners, Rossville)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Jessica Mabb | 263 | [x] KNOWN | [x] | [x] | [x] | Known Davis/Noble match |
+| Samantha Nona | 157 | [x] KNOWN | [x] | [x] | [x] | Known Davis match |
+| L.J. (mjordan5) | 35 | [x] 1,536 ppl: Jordan, Wenger, Wilson, Black, Evans | [x] 32% S Wales, 17% SE England, 0% Aboriginal | [x] Naumanen 226, M.E. 67 (161!), Lynn81149 53 (65), RaymondGee84 34, J.D. 34 (153), Barbara Horner 31 | [x] | ANCHORS Lynn81149 cluster |
+
+## PROSSER (Ivor Prosser, selector, Bloomfield)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Richard Bates | 22 | [x] 4,980 ppl: Bates, Mayfield, Grayson, Koonce | [x] 41% Scottish, 28% SE England, 0% Aboriginal | [x] rose3599 581 (24), Philip Pitt 257 (20), Rochelle Pitt 214 (25), Jessica Pitt 204 (21), Stephanie Pitt 201, Sophie Pitt 143 | [x] | Pitt/Noble |
+| Luke Smith | 11 | [x] 2,855 ppl: Smith, Ransome, Walker, Bradbury, Reader, Homewood, Gleave, Izzard | [x] 44% W Midlands, 37% SE England, 10% NW Germany, 0% Aboriginal | [x] Daniel Bond 11, Rhys Francis 11, Ean Barton 11, Sarah Roper 11, Lynnette Dwyer 11, Anthony Farley 11 (all P1) | [x] | **SAME CLUSTER as Hazel Miller** (shared: Bond, Barton, Roper, Dwyer). English/Midlands. |
+| WillandWendy2 | 11 | [x] 1,226 ppl: Howland, **PROSSER x4**, Goundrey, Lain, Timms, Estes | [x] 54% SE England, 11% NW Germany, 10% Netherlands, 0% Aboriginal | [x] sharonfry59 11, Alletta Farnell 11, Peter Mason 10, Dale Sall 9, **Helen Pearcey 8** (all P1) | [x] | **PROSSER FAMILY in tree!** Separate Prosser/Pearcey cluster. |
+| Susan Palmer | 9 | [x] 18,222 ppl: Palmer, Barrows, Bond, Clayton, **Davies** (Alfred Morris 1867), Howells, Jones, **Rosina Jones** | [x] **50% S Wales**, 36% SE England, 11% Devon, 0% Aboriginal | [x] Jo Slota 15, **Barrie Davies 9 (57 shared)**, tiggconn 9, Michael Coles 9, Patricia Downes 9 (all P1) | [x] | **DAVIES in tree. ROSINA in tree.** Welsh. Separate cluster. |
+| John Monsen | 9 | [x] 300 ppl: Monsen/Monschke, Sauer, Miller, Mauer, Faubion, Cooper, Clevenger | [x] 27% Scottish, 25% S Germanic, 14% N Central Europe, 11% NE England, 0% Aboriginal | [x] Agnes Granger 9 P1 (only shared match) | [x] | Isolated. German/Scottish. |
+| Jonathan ODaniel | 9 | [x] 428 ppl: Slagley, Austin, Smith, **Mason**, Pickel, **Clevenger**, Monroe | [x] 21% SE England, 18% Scottish, 13% N Wales, 13% W Midlands, 12% NW Germany, 9% Cornwall, 0% Aboriginal | [x] Ann Marie Wagstaff 10, **Shane Davis 9 P1**, Heidi Alu 9, **Angela DeNike P1** (also Hatfield) | [x] | **MASON in tree**. Shane Davis shared. Angela DeNike cross-match. |
+| Daniel Adams | ? | [ ] | [ ] | [ ] | [ ] | |
+
+## BARNARD (Wilfred Barnard, mining lease, Bloomfield)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| jenlynthom | 18 | [x] 2,272 ppl: Thompson, Burney, Wood, Zost, Knox, Brown, Nett, Riley | [x] 34% SE England, 23% Scottish, 12% Connacht, 9% S Germanic, 0% Aboriginal | [x] Sherri Cundiff 18, T.B. 18, W.B. 17, K.P. 17, Amber Fleege 16, ibyingnow 16 (all P1) | [x] | NOT Pitt/Noble. Own cluster. American. |
+| Lenny Frazier | 17 | [x] PRIVATE 3,034 ppl | [x] 26% SE England, 18% Munster, 13% Scottish, 3% Basque, 0% Aboriginal | [x] NO SHARED MATCHES | [x] | Isolated. No cluster assignment possible. |
+| Patricia Hickox Hunt | 16 | [x] 2,840 ppl: Hickox, Martin, Beverly, Pitman, Scruggs, Bryant, **Reynolds**, Hayes | [x] 34% SE England, 16% N Wales, 10% NW Germany, 0% Aboriginal | [x] Carol Bloomer 25, **Sandra Meeks 22**, **pdo53 22**, Richard Bates 22, **Anthony Bates 22**, j_vidakovic2020 22 | [x] | **REYNOLDS in tree**. Bridges Meeks + Pitt/Noble clusters. |
+
+## BAUER (Frederick Bauer, settler/boat builder, Vilele/Weary Bay)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| robert_bradshaw88 | 43 | [x] 101 ppl: Bradshaw, Roe, Beck, Aubrey, Brabender | [x] 31% Scottish, 29% NE England, 11% Munster, 0% Aboriginal | [x] Laurence Davis 786 (21), rose3599 581 (61!), Philip Pitt 257 (33), Naumanen 226 (53), Jessica Pitt 204 (28) | [x] | Both Davis + Pitt/Noble clusters |
+
+## HANNAM (James Hannam, estate, MOUNT ROMEO)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Susiethompson16 | 9 | [x] 244 ppl: Horton, Joiner, Jackson, Belton, McGhee, Downs, Haddock | [x] 30% W Midlands, 28% Scottish, 20% SE England, 0% Aboriginal | [x] Wetta Sums 10, Chare Heide 10, M.M. 10 (74 shared), drummeri 10, Lois Mcnew 10, Joyce Redmond 10 (all P1) | [x] | Own cluster of 6 at 10cM. Mt Romeo connection. |
+| rebeccabramer | 9 | [ ] | [ ] | [ ] | [x] file created | 449 ppl tree. Not yet explored individually. |
+| 01luv2ridefar99 | 9 | [ ] | [ ] | [ ] | [x] file created | 19,636 ppl tree. Not yet explored individually. |
+| Louisa Gray | 8 | [ ] | [ ] | [ ] | [x] file created | 371 ppl tree. Not yet explored individually. |
+
+## BLANN (James Blann, Rossville)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Dylan Morrow | 19 | [x] 6 ppl: Morrow, Boylan, Williams | [x] 38% Scottish, 19% Connacht, 14% Munster, 0% Aboriginal | [x] J.B. 28, S.J. 27, BRIAN BURNS 27, Alan Mohn 26, Ann Mohn-Brimhall 26, Carol Bloomer 25 | [x] | Pitt/Noble via J.B./Mohn sub-cluster |
+| Allayna Moretti | 17 | [x] 13 ppl: Moretti, **Parsons**, Beaulne, Verhagen, Van Zoggel | [x] 44% S Germanic, 21% NE Italy, 11% NW Germany, 0% Aboriginal | [x] Jane Aspinall 23 (28), Gary Blythe 17 (25), Karolyn Whatley 12 (32), **Bonnie Scott 10 (109!)**, **prolongsr 9 (152!)** | [x] | **PARSONS in tree** (Rossville miners). Aspinall cluster. |
+| Sherazard Christian | 13 | [x] PRIVATE 2,633 ppl | [x] 39% NE England, 18% N Wales, 12% Scottish, 0% Aboriginal | [x] Tamar El-menshawy 17 P1 (54), Robert Miles 8 P1 (25) | [x] | NOT Pitt/Noble. Own small cluster. Strong NE England. |
+| chgoartwerks | ? | [ ] | [ ] | [ ] | [ ] | |
+
+## McCLEAN (Thomas McClean, Rossville)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Stephanie Pitt | 201 | [x] KNOWN | [x] | [x] | [x] | Known Pitt cluster |
+| L.J. (mjordan5) | 35 | [x] | [x] | [x] | [x] | See Kerr entry |
+| Barbara Horner | 31 | [x] PRIVATE 113 ppl | [x] 50% SE England, 23% Scottish, 10% N Wales, 0% Aboriginal | [x] Naumanen 226 (27), Leigh Glass 59 (24), L.J. 35 (34), RaymondGee84 34 (32), **RONHARPER101 33 (33)** | [x] | Naumanen/L.J. network. Found RONHARPER101 33cM P1 |
+| Lori Denton | 24 | [x] | [x] | [x] | [x] | See Olufson entry |
+| allan thomas | 21 | [x] | [x] | [x] | [x] | See Buhmann entry |
+
+## COCHRANE (Peter Cochrane, selector, Bloomfield River)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Debbie Ittner | 16 | [x] 660 ppl: Ittner, Dankelmann, Price, Anderson, Leaird, Powell, **Barlow** | [x] 35% Scottish, 19% NE England, 9% E Midlands, 7% Denmark, 0% Aboriginal | [x] R.V. (Vidakovich) 16 P1, Nik Borisuk 14 P1, J.G. (Luna) 13 P1, Robert Daniel 11 P1 | [ ] | NOT Pitt/Noble. Separate cluster. **Barlow** surname in tree (=Murgha birth name). |
+
+## LYNN81149 CLUSTER (discovered via L.J., NOT from corridor search)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| M.E. (Lynn81149) | 67 | [x] 65 ppl: Dixon, Quinn, Redmond, Hanna, Hunter, Davidson | [x] 68% Scottish, 0% Aboriginal | [x] Laurence Davis 786 (24), Shale 759 (36), Mabb 263 (26), Philip Pitt 257 (48!), Naumanen 226 (67!), Rochelle Pitt 214 | [x] | STRONGEST unassigned P1. Both clusters. |
+| Lynn81149 | 53 | [ ] | [ ] | [ ] | [ ] | Same 65 ppl tree as M.E. |
+| J.D. (Lynn81149) | 34 | [ ] | [ ] | [ ] | [ ] | Same 65 ppl tree as M.E. |
+
+## MEEKS CLUSTER (discovered via Willam W Harrell)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Sandra Meeks | 22 | [ ] | [ ] | [ ] | [ ] | No tree |
+| pdo53 | 22 | [ ] | [ ] | [ ] | [ ] | Public tree |
+| MICHAEL DANIELS | 21 | [ ] | [ ] | [ ] | [ ] | No tree |
+| Michael Meeks | 19 | [ ] | [ ] | [ ] | [ ] | Public tree |
+| Barbara Meeks | 19 | [ ] | [ ] | [ ] | [ ] | No tree |
+| Angelique Petersen | 18 | [ ] | [ ] | [ ] | [ ] | Public tree |
+
+## DORSETPAUL98 CLUSTER (discovered via dorsetpaul98)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| D.W. (garywarm) | 19 | [ ] | [ ] | [ ] | [ ] | Public tree |
+| Barbara Hedges | 18 | [ ] | [ ] | [ ] | [ ] | Public tree |
+| David Wiese | 12 | [ ] | [ ] | [ ] | [ ] | Unlinked tree |
+| Jan Stevens | 12 | [ ] | [ ] | [ ] | [ ] | No tree |
+| on30ng | 12 | [ ] | [ ] | [ ] | [ ] | Private tree |
+| Jeffrey King | 11 | [ ] | [ ] | [ ] | [ ] | No tree |
+
+## JANE ASPINALL SUB-CLUSTER (discovered via Jane Aspinall)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| ryan elliott | 17 | [ ] | [ ] | [ ] | [ ] | No tree |
+| Allayna Moretti | 17 | [ ] | [ ] | [ ] | [ ] | 13 ppl tree. Also in Blann search |
+| Karolyn Whatley | 12 | [ ] | [ ] | [ ] | [ ] | Public tree |
+| Glennis Lingard | 11 | [ ] | [ ] | [ ] | [ ] | Public tree, managed Graham Bailey |
+| Bonnie Scott | 10 | [ ] | [ ] | [ ] | [ ] | Public tree |
+
+## DENISE WILLIAMS SHARED MATCHES (not in above clusters)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Rebecca Garland | 31 | [ ] | [ ] | [ ] | [ ] | No tree. Also Erin Brannigan shared |
+| Kevin Hall | 25 | [ ] | [ ] | [ ] | [ ] | Unlinked tree |
+| mpeck676 | 23 | [ ] | [ ] | [ ] | [ ] | No tree |
+| Marianne Stewart | ? | [ ] | [ ] | [ ] | [ ] | Managed by Ralph |
+
+## BRADSHAW CLUSTER (discovered via hbquijano/robert_bradshaw88)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| robert_bradshaw88 | 43 | [x] 101 ppl: Bradshaw, Roe, Beck, Aubrey, Brabender | [x] 31% Scottish, 29% NE England, 0% Aboriginal | [x] Laurence Davis 786 (21), rose3599 581 (61!), Philip Pitt 257 (33), Naumanen 226 (53) | [x] | Both Davis + Pitt/Noble |
+| helenbannerman1 | 37 | [x] Unlinked 2 ppl: Manning | [x] 27% Scottish, 21% N Wales, 19% Munster, 15% NE England, 0% Aboriginal | [x] Philip Pitt 257 (44), robert_bradshaw88 43 (**178!!**), Rochelle Pitt 214 (26), maureen king 30 | [x] | robert's close relative (178cM = half 2nd cousin) |
+| Mary Bradshaw | 28 | [x] NO TREE | [x] 56% Scottish, 18% Munster, 0% Aboriginal | [x] **robert_bradshaw88 = FATHER (3486cM)**, helenbannerman1 72, abirkhead 23, hbquijano 15, A.M. 13, Lisa Gobo 8 | [x] | robert's DAUGHTER |
+| abirkhead | 23 | [ ] | [ ] | [ ] | [ ] | Shared by hbquijano and Mary Bradshaw |
+
+## SAMANTHA EVANS CLUSTER (discovered via Dolan search)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| indradegaine | 31 | [ ] | [ ] | [ ] | [ ] | Private unlinked tree |
+| M Hughes | 29 | [ ] | [ ] | [ ] | [ ] | Private linked tree |
+| Carol Gray Gauthier | 28 | [ ] | [ ] | [ ] | [ ] | Unlinked tree |
+| M. Denise Desmond | 27 | [ ] | [ ] | [ ] | [ ] | No tree |
+| Kathryn Dodson | 26 | [ ] | [ ] | [ ] | [ ] | Also appeared in Connolly matches |
+
+## DEBBIE ITTNER CLUSTER (Cochrane search, has Barlow in tree)
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| R.V. (John Vidakovich) | 16 | [ ] | [ ] | [ ] | [ ] | Public tree |
+| Nik Borisuk | 14 | [ ] | [ ] | [ ] | [ ] | Public tree (jordan_brianna11) |
+| J.G. (Esperanza Luna) | 13 | [ ] | [ ] | [ ] | [ ] | Unlinked tree |
+| Robert Daniel | 11 | [ ] | [ ] | [ ] | [ ] | Unlinked tree |
+
+## NEWLY DISCOVERED INDIVIDUAL MATCHES
+
+| Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
+|-------|-----|------|-----------|--------|----------|-------|
+| Leigh Glass | 59 | [x] Unlinked 41 ppl: Glass, Linington | [x] 44% SE England, 19% Scottish, 10% N Wales, 8% Netherlands, 0% Aboriginal | [x] Shale 759 (52), **Philip Pitt 257 (97!)**, **Naumanen 226 (149!)**, Jessica Pitt 204 (41), Stephanie Pitt 201 (41), Eric Pitt 163 | [ ] | Deep Pitt/Noble. 97cM w/ Philip Pitt, 149cM w/ Naumanen |
+| maureen king | 30 | [ ] | [ ] | [ ] | [ ] | Found via helenbannerman1 shared. Public tree |
+| Patrick Kohler | 15 | [ ] | [ ] | [ ] | [ ] | Found via Alex Monsrud shared. Public tree (Roberta Kohler) |
+| Brian Kohler | 15 | [ ] | [ ] | [ ] | [ ] | Found via Alex Monsrud shared. Public tree |
+
+## SURNAMES STILL TO SEARCH ON ANCESTRY
+
+| Surname | Corridor Person | Location | Status |
+|---------|----------------|----------|--------|
+| Mundy/Munn | Mundy Munn (d.1954 age 89, Bloomfield), Munday/Monday Nunn (Kukudungero) | Bloomfield, Rossville | SEARCHED. **lorraineemerson90 30cM P1** (connects to Davis cluster!), Ann Mohn-Brimhall 26, Lori Denton 24, jenlynthom 18 |
+| Ogilvie | Nellie Ogilvie (mother of Mundy Nunn b.1929) | Bloomfield corridor | SEARCHED. Lori Denton 24 (seen), bob_moldowan 10, Libby MacFadyen 9, Goldie Jessome 9, Maggie Mac 9, shannon beadow 8. All P1. |
+| Springvale | Dickie Springvale (brother of Mundy Nunn, EKY apical) | Bloomfield corridor | SEARCHED. **Clayton Seymour 30 P1** [x] explored: 251 ppl, **Pearce** in tree, Pitt/Noble cluster. FSmum 15 P1 (6,471 ppl tree) not yet explored. |
+| Johnson | Philip Johnson (sawmill, Bloomfield) | Bloomfield | NOT YET SEARCHED |
+| Wilson | Wilson (selector, Bloomfield/China Camp) | Bloomfield | NOT YET SEARCHED |
+| Rix | Rix (mining camp, Bloomfield Tin Mines) | Bloomfield | NOT YET SEARCHED |
+| Gifford | George Gifford (1885 gazette, Bloomfield River) | Bloomfield | NOT YET SEARCHED |
+| Mason | H.A. Mason (1885 gazette, Bloomfield River) | Bloomfield | NOT YET SEARCHED |
+| Scott | Thomas Scott (1885 gazette, Bloomfield) | Bloomfield | NOT YET SEARCHED |
+| Asmundsen | Asmundsen/Osmondsen (selector, Bloomfield) | Bloomfield | NOT YET SEARCHED |
+| Mujala | Sisters Mujala and Rosie (EKY native title, Rosie's sister) | EKY country | NOT YET SEARCHED |
+
+## MUNDY NUNN / MUNN RESEARCH NOTES
+
+Critical connection: Mundy Nunn is EKY apical ancestor #xii ("Brothers Dickie Springvale and Mundy Nunn") in the SAME native title document cluster as "Sisters Mujala and Rosie" (Rosie Rosie). The Nunn surname is established within the same native title group as Rosie.
+
+- Mundy Munn: died September 1954 at Bloomfield, age 89 (born c.1865). If this is the father of Mundy Nunn (b.1929), he was ~64 when his son was born.
+- Monday/Mundy Nunn: Aboriginal name Kukudungero, age 16 in medical record. At Helenvale in 1933 Cilento survey.
+- Mundy Nunn (b.1929, d.1981 Ruby Creek): parents Nellie Ogilvie and Mundy Nunn. EKY apical ancestor.
+
+The Nunn surname in Aboriginal families comes from the white Nunn family at Nunnville/Rossville who fostered Julia. Aboriginal people with the Nunn surname are from the same Bloomfield/Rossville corridor.
+
+## SUMMARY STATS
+
+- **Total P1 matches identified**: ~90 (including newly discovered via shared matches)
+- **Fully explored (tree + ethnicity + shared)**: 28
+- **Ingested into GOKS**: 19 (deep exploration file covers most)
+- **Remaining to explore**: ~62
+- **New clusters found**: 7 (Lynn81149, Meeks, dorsetpaul98, Aspinall, Bradshaw, Evans/Dodson, Ittner/Barlow)
+- **Matches with 0% Aboriginal so far**: 28/28 (100%)
+- **KEY FINDING**: giantsnowball (18 cM P1) shares ONLY Hezron Murgha = connects through NELLIE'S LINE
+- **KEY FINDING**: Debbie Ittner has **Barlow** in tree (Jhinna Murgha's birth surname)
+- **PRIORITY**: Leigh Glass (59 cM P1) discovered via G.R. shared matches, not yet explored
