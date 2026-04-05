@@ -186,9 +186,9 @@ Legend: [x] = done, [ ] = not done
 |-------|-----|------|-----------|--------|----------|-------|
 | ryan elliott | 17 | [ ] | [ ] | [ ] | [ ] | No tree |
 | Allayna Moretti | 17 | [ ] | [ ] | [ ] | [ ] | 13 ppl tree. Also in Blann search |
-| Karolyn Whatley | 12 | [ ] | [ ] | [ ] | [ ] | Public tree |
+| Karolyn Whatley | 12 | [x] Bonnie Scott's DAUGHTER (3485cM) | [x] (same family as Bonnie) | [x] same cluster | [x] | |
 | Glennis Lingard | 11 | [ ] | [ ] | [ ] | [ ] | Public tree, managed Graham Bailey |
-| Bonnie Scott | 10 | [ ] | [ ] | [ ] | [ ] | Public tree |
+| Bonnie Scott | 10 | [x] 12 ppl: Scott, Roach, Miljure | [x] 61% SE England, 13% Munster, 0% Aboriginal | [x] Aspinall 23 (51), **Moretti 17 (109!)**, **Karolyn Whatley = DAUGHTER (3485)**, **prolongsr 9 (249)**, Ryan Smith 8 | [x] | Close family of Moretti. Karolyn=daughter. |
 
 ## DENISE WILLIAMS SHARED MATCHES (not in above clusters)
 
@@ -214,9 +214,9 @@ Legend: [x] = done, [ ] = not done
 |-------|-----|------|-----------|--------|----------|-------|
 | indradegaine | 31 | [x] PRIVATE unlinked | [x] 27% N Wales, 16% E Midlands, 11% Scottish, **27% West African**, 0% Aboriginal | [x] M Hughes 29 (38), **Marci Grell 29 (111=3C)**, **Carol Gray Gauthier 28 (3469=MOTHER!)**, M Denise Desmond 27 (33), **justin grell 26 (52)**, Kathryn Dodson 26 | [x] | Carol is MOTHER. Grell family. 27% African. Evans/Dodson cluster. |
 | M Hughes | 29 | [x] PRIVATE 195 ppl. Also Tom Hughes 11 P1, Adam Hughes 10 P1 | [x] 33% N Wales, **39% Italian** (16% C Italy, 12% NW Italy, 11% NE Italy), 0% Aboriginal | [x] indradegaine 31 (38), Marci Grell 29 (29), Carol Gray Gauthier 28 (38), M Denise Desmond 27 (26), justin grell 26 (28), Kathryn Dodson 26 | [x] | Evans/Dodson/Gauthier/Grell cluster. Welsh/Italian. 3 Hughes matches. |
-| Carol Gray Gauthier | 28 | [ ] | [ ] | [ ] | [ ] | Unlinked tree |
-| M. Denise Desmond | 27 | [ ] | [ ] | [ ] | [ ] | No tree |
-| Kathryn Dodson | 26 | [ ] | [ ] | [ ] | [ ] | Also appeared in Connolly matches |
+| Carol Gray Gauthier | 28 | [x] Unlinked tree | [x] 27% N Wales, 24% SE England, 16% Scottish, 13% NW Germany, 0% Italian, 0% Aboriginal | [x] indradegaine 31 (daughter 3469), M Hughes 29 (38), **Marci Grell 29 (191=2C1R!)**, M Denise Desmond 27, **justin grell 26 (116=2C1R)**, Kathryn Dodson 26 | [x] | indradegaine's MOTHER. Close to Grell family. |
+| M. Denise Desmond | 27 | [x] No tree | [ ] | [x] same Evans/Dodson cluster | [x] | Part of cluster batch file |
+| Kathryn Dodson | 26 | [x] Public tree | [ ] | [x] same Evans/Dodson cluster | [x] | Also in Connolly matches. Part of batch file |
 
 ## DEBBIE ITTNER CLUSTER (Cochrane search, has Barlow in tree)
 
