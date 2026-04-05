@@ -173,8 +173,8 @@ Legend: [x] = done, [ ] = not done
 
 | Match | cM | Tree | Ethnicity | Shared | Ingested | Notes |
 |-------|-----|------|-----------|--------|----------|-------|
-| D.W. (garywarm) | 19 | [ ] | [ ] | [ ] | [ ] | Public tree |
-| Barbara Hedges | 18 | [ ] | [ ] | [ ] | [ ] | Public tree |
+| D.W. (garywarm) | 19 | [x] 429 ppl: **Hedges x4**, McKeown, McCartney, Gehrt, Staab, McVicker | [x] **61% Scottish**, 13% SE England, 7% E Midlands, 0% Aboriginal | [x] Bevvy_l_gts8 21, **Barbara Hedges 18 (SISTER 2600cM)**, Leslievillaanna12 15, Jan Stevens 12, **Charles Vanorsdale 12**, on30ng 12 | [x] | Barbara Hedges = sister. VanOrsdale crossmatch! Very Scottish. |
+| Barbara Hedges | 18 | [x] Same tree as D.W. (sister 2600cM). Hedges family 429 ppl | [x] ~61% Scottish (same as D.W.) 0% Aboriginal | [x] Bevvy_l_gts8 21, D.W. 19 (sister), Leslievillaanna12 15, **Robert VanOrsdale 12**, Jan Stevens 12, **Charles Vanorsdale 12** | [x] | **CLUSTER MERGER: dorsetpaul98 + VanOrsdale = one network** |
 | David Wiese | 12 | [ ] | [ ] | [ ] | [ ] | Unlinked tree |
 | Jan Stevens | 12 | [ ] | [ ] | [ ] | [ ] | No tree |
 | on30ng | 12 | [ ] | [ ] | [ ] | [ ] | Private tree |
