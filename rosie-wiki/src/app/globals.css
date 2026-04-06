@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --wiki-bg: #ffffff;
+  --wiki-text: #202122;
+  --wiki-link: #0645ad;
+  --wiki-link-visited: #0b0080;
+  --wiki-border: #a2a9b1;
+  --wiki-light-border: #c8ccd1;
+  --wiki-infobox-bg: #f8f9fa;
+  --wiki-infobox-header: #ddd;
+  --wiki-toc-bg: #f8f9fa;
+  --wiki-heading-border: #a2a9b1;
+  --wiki-category-bg: #f0f0f0;
+  --wiki-notice-bg: #f9edbe;
+  --wiki-notice-border: #f0c36d;
+  --wiki-ref: #006699;
+  --wiki-sidebar-bg: #f6f6f6;
+}
+
+body {
+  background: var(--wiki-bg);
+  color: var(--wiki-text);
+  font-family: 'Linux Libertine', 'Georgia', 'Times', 'Source Serif Pro', serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+}
+
+a {
+  color: var(--wiki-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--wiki-link-visited);
+}
