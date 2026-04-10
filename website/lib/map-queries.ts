@@ -39,7 +39,12 @@ export interface MapDataBundle {
  * Called once in the server component; entire result sent to client as JSON.
  */
 export function getMapData(): MapDataBundle {
-  const db = getDb();
+  let db;
+  try {
+    db = getDb();
+  } catch {
+    return { events: [], locations: [], people: [], yearRange: [1800, 2025] };
+  }
 
   const rows = db.prepare(`
     SELECT

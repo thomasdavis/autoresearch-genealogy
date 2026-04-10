@@ -34,7 +34,12 @@ export interface GraphData {
 }
 
 export function getGraphData(): GraphData {
-  const sqlite = getDb();
+  let sqlite;
+  try {
+    sqlite = getDb();
+  } catch {
+    return { nodes: [], links: [] };
+  }
   
   const entities = sqlite.prepare('SELECT id, canonical_name as name, type, metadata FROM entities').all() as EntityNode[];
   const relationships = sqlite.prepare('SELECT id, entity_a_id as source, entity_b_id as target, type, confidence FROM relationships').all() as RelationshipEdge[];
@@ -51,7 +56,12 @@ export function getGraphData(): GraphData {
 }
 
 export function getEntity(id: string) {
-  const sqlite = getDb();
+  let sqlite;
+  try {
+    sqlite = getDb();
+  } catch {
+    return null;
+  }
   const entity = sqlite.prepare('SELECT * FROM entities WHERE id = ?').get(id);
   if (!entity) return null;
 
