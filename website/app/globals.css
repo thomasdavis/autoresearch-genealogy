@@ -240,3 +240,536 @@ body {
   background: var(--color-moderate-bg);
   border-color: var(--color-moderate);
 }
+
+/* ─── Wiki styles ──────────────────────────────────────────────────── */
+
+.wiki-body {
+  background: #f6f6f6;
+  color: #202122;
+  font-family: -apple-system, "Segoe UI", Roboto, Lato, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Header */
+.wiki-header {
+  background: #fff;
+  border-bottom: 1px solid #a7d7f9;
+  padding: 0;
+}
+
+.wiki-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px;
+}
+
+.wiki-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #202122;
+}
+
+.wiki-logo-icon {
+  width: 48px;
+  height: 48px;
+  background: #f0f0f0;
+  border: 1px solid #c8ccd1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Linux Libertine", Georgia, "Times New Roman", serif;
+  color: #202122;
+}
+
+.wiki-logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.wiki-logo-title {
+  font-family: "Linux Libertine", Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.wiki-logo-subtitle {
+  font-size: 11px;
+  color: #54595d;
+}
+
+.wiki-nav {
+  display: flex;
+  gap: 16px;
+}
+
+.wiki-nav a {
+  color: #0645ad;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+.wiki-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main content wrapper */
+.wiki-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #a7d7f9;
+  border-top: none;
+  min-height: 100vh;
+  padding: 20px 30px 40px;
+}
+
+/* Article styles */
+.wiki-article h1 {
+  font-family: "Linux Libertine", Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: normal;
+  border-bottom: 1px solid #a2a9b1;
+  padding-bottom: 4px;
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+
+.wiki-article h2 {
+  font-family: "Linux Libertine", Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: normal;
+  border-bottom: 1px solid #a2a9b1;
+  padding-bottom: 2px;
+  margin: 24px 0 8px;
+  clear: both;
+}
+
+.wiki-article h3 {
+  font-size: 17px;
+  font-weight: bold;
+  margin: 18px 0 6px;
+}
+
+.wiki-article p {
+  margin: 0 0 10px;
+}
+
+.wiki-article a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+.wiki-article a:hover {
+  text-decoration: underline;
+}
+
+.wiki-article ul,
+.wiki-article ol {
+  margin: 4px 0 10px 24px;
+  padding: 0;
+}
+
+.wiki-article li {
+  margin-bottom: 4px;
+}
+
+.wiki-lead {
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+/* Infobox */
+.wiki-infobox {
+  float: right;
+  clear: right;
+  width: 280px;
+  margin: 0 0 16px 20px;
+  border: 1px solid #a2a9b1;
+  background: #f8f9fa;
+  font-size: 13px;
+  border-collapse: collapse;
+}
+
+.wiki-infobox-header {
+  background: #1a5276;
+  color: #fff;
+  text-align: center;
+  padding: 8px 10px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Linux Libertine", Georgia, "Times New Roman", serif;
+}
+
+.wiki-infobox table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.wiki-infobox th,
+.wiki-infobox td {
+  border-top: 1px solid #a2a9b1;
+  padding: 6px 10px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.wiki-infobox th {
+  background: #e8e8e8;
+  font-weight: bold;
+  width: 35%;
+  white-space: nowrap;
+}
+
+.wiki-infobox td {
+  background: #f8f9fa;
+}
+
+/* Table of Contents */
+.wiki-toc {
+  display: inline-block;
+  background: #f8f9fa;
+  border: 1px solid #a2a9b1;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+  font-size: 13px;
+  min-width: 200px;
+}
+
+.wiki-toc-title {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.wiki-toc ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.wiki-toc li {
+  margin: 2px 0;
+}
+
+.wiki-toc a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+.wiki-toc a:hover {
+  text-decoration: underline;
+}
+
+/* Categories */
+.wiki-categories {
+  margin-top: 30px;
+  padding: 10px 14px;
+  background: #f8f9fa;
+  border: 1px solid #a2a9b1;
+  font-size: 13px;
+  clear: both;
+}
+
+.wiki-category {
+  color: #0645ad;
+}
+
+/* Related / See also */
+.wiki-related ul {
+  list-style: disc;
+  margin-left: 24px;
+}
+
+/* Sources */
+.wiki-sources {
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+.wiki-sources ol {
+  margin-left: 24px;
+}
+
+.wiki-sources li {
+  margin-bottom: 3px;
+  color: #54595d;
+}
+
+/* ─── Family Tree Chart ────────────────────────────────────────────── */
+
+.family-tree-container {
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.tree-legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+
+.tree-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.tree-legend-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 2px solid;
+}
+
+.tree-roots {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.tree-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tree-children {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.tree-connector {
+  width: 2px;
+  height: 16px;
+  background: #a2a9b1;
+}
+
+.tree-children-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  padding-top: 8px;
+}
+
+.tree-children-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: #a2a9b1;
+}
+
+.tree-card {
+  display: block;
+  border: 2px solid;
+  border-radius: 6px;
+  padding: 8px 12px;
+  text-decoration: none;
+  min-width: 140px;
+  max-width: 180px;
+  text-align: center;
+  transition: box-shadow 0.15s, transform 0.15s;
+  cursor: pointer;
+}
+
+.tree-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.tree-card-name {
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.tree-card-dates {
+  font-size: 11px;
+  color: #54595d;
+}
+
+.tree-card-island {
+  font-size: 10px;
+  color: #72777d;
+  margin-top: 2px;
+}
+
+.tree-orphans {
+  margin-top: 30px;
+  border-top: 1px solid #a2a9b1;
+  padding-top: 20px;
+}
+
+.tree-orphans h3 {
+  font-family: "Linux Libertine", Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  font-weight: normal;
+  margin: 0 0 12px;
+}
+
+.tree-orphans-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ─── Wiki Homepage ────────────────────────────────────────────────── */
+
+.wiki-home-welcome {
+  background: #f8f9fa;
+  border: 1px solid #a7d7f9;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.wiki-home-welcome h2 {
+  font-family: "Linux Libertine", Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: normal;
+  margin: 0 0 8px;
+  border: none;
+  padding: 0;
+}
+
+.wiki-home-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .wiki-home-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-infobox {
+    float: none;
+    width: 100%;
+    margin: 0 0 16px;
+  }
+
+  .wiki-header-inner {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .wiki-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.wiki-home-section {
+  background: #f8f9fa;
+  border: 1px solid #a7d7f9;
+  padding: 14px 18px;
+}
+
+.wiki-home-section h3 {
+  font-family: "Linux Libertine", Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  font-weight: normal;
+  border-bottom: 1px solid #a7d7f9;
+  padding-bottom: 4px;
+  margin: 0 0 10px;
+  color: #202122;
+}
+
+.wiki-home-section ul {
+  list-style: disc;
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.wiki-home-section li {
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.wiki-home-section a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+.wiki-home-section a:hover {
+  text-decoration: underline;
+}
+
+.wiki-stats-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.wiki-stat {
+  background: #f8f9fa;
+  border: 1px solid #a7d7f9;
+  padding: 12px 18px;
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+}
+
+.wiki-stat-number {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1a5276;
+  font-family: "Linux Libertine", Georgia, "Times New Roman", serif;
+}
+
+.wiki-stat-label {
+  font-size: 12px;
+  color: #54595d;
+  margin-top: 2px;
+}
+
+/* Article list on homepage */
+.wiki-article-list {
+  columns: 2;
+  column-gap: 20px;
+}
+
+.wiki-article-list a {
+  display: block;
+  color: #0645ad;
+  text-decoration: none;
+  padding: 2px 0;
+  font-size: 13px;
+}
+
+.wiki-article-list a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .wiki-article-list {
+    columns: 1;
+  }
+}
