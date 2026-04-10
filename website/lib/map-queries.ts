@@ -38,15 +38,19 @@ export interface MapDataBundle {
  * Fetch all geocodable, date-parseable events with their participants.
  * Called once in the server component; entire result sent to client as JSON.
  */
+const EMPTY_BUNDLE: MapDataBundle = { events: [], locations: [], yearRange: [1800, 2025], eventCountsByYear: {} };
+
 export function getMapData(): MapDataBundle {
   let db;
   try {
     db = getDb();
   } catch {
-    return { events: [], locations: [], yearRange: [1800, 2025], eventCountsByYear: {} };
+    return EMPTY_BUNDLE;
   }
 
-  const rows = db.prepare(`
+  let rows;
+  try {
+    rows = db.prepare(`
     SELECT
       e.id        AS event_id,
       e.type      AS event_type,
@@ -72,6 +76,9 @@ export function getMapData(): MapDataBundle {
     person_id: string;
     person_name: string;
   }>;
+  } catch {
+    return EMPTY_BUNDLE;
+  }
 
   // Group rows by event_id (multiple participants per event)
   const eventMap = new Map<string, {

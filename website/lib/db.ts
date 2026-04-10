@@ -34,35 +34,21 @@ export interface GraphData {
 }
 
 export function getGraphData(): GraphData {
-  let sqlite;
   try {
-    sqlite = getDb();
+    const sqlite = getDb();
+    const entities = sqlite.prepare('SELECT id, canonical_name as name, type, metadata FROM entities').all() as EntityNode[];
+    const relationships = sqlite.prepare('SELECT id, entity_a_id as source, entity_b_id as target, type, confidence FROM relationships').all() as RelationshipEdge[];
+    const claims = sqlite.prepare('SELECT id, subject_id as source, object_entity_id as target, predicate as type, confidence FROM claims WHERE object_entity_id IS NOT NULL').all() as RelationshipEdge[];
+    return { nodes: entities, links: [...relationships, ...claims] };
   } catch {
     return { nodes: [], links: [] };
   }
-  
-  const entities = sqlite.prepare('SELECT id, canonical_name as name, type, metadata FROM entities').all() as EntityNode[];
-  const relationships = sqlite.prepare('SELECT id, entity_a_id as source, entity_b_id as target, type, confidence FROM relationships').all() as RelationshipEdge[];
-  
-  // Also include claims that link to an object_entity_id as relationships
-  const claims = sqlite.prepare('SELECT id, subject_id as source, object_entity_id as target, predicate as type, confidence FROM claims WHERE object_entity_id IS NOT NULL').all() as RelationshipEdge[];
-  
-  const edges = [...relationships, ...claims];
-  
-  return {
-    nodes: entities,
-    links: edges,
-  };
 }
 
 export function getEntity(id: string) {
-  let sqlite;
   try {
-    sqlite = getDb();
-  } catch {
-    return null;
-  }
-  const entity = sqlite.prepare('SELECT * FROM entities WHERE id = ?').get(id);
+    const sqlite = getDb();
+    const entity = sqlite.prepare('SELECT * FROM entities WHERE id = ?').get(id);
   if (!entity) return null;
 
   const claims = sqlite.prepare('SELECT * FROM claims WHERE subject_id = ? ORDER BY confidence DESC, predicate ASC').all(id);
@@ -123,4 +109,7 @@ export function getEntity(id: string) {
     discrepancies,
     sources,
   };
+  } catch {
+    return null;
+  }
 }
