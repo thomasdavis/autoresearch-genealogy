@@ -43,7 +43,7 @@ export function getMapData(): MapDataBundle {
   try {
     db = getDb();
   } catch {
-    return { events: [], locations: [], people: [], yearRange: [1800, 2025] };
+    return { events: [], locations: [], yearRange: [1800, 2025], eventCountsByYear: {} };
   }
 
   const rows = db.prepare(`
